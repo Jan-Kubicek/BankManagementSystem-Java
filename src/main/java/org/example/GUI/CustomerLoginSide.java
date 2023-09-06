@@ -2,6 +2,7 @@ package org.example.GUI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowEvent;
 
 
 public class CustomerLoginSide extends JFrame {
@@ -14,16 +15,16 @@ public class CustomerLoginSide extends JFrame {
     //Konstruktor
     public CustomerLoginSide(){
         InitGUI();
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setSize(640,480);
-        setTitle("Employe login side");
+        setTitle("Customer login side");
     }
     //GUI
     public void InitGUI(){
         //Center
         pnlCenter = new JPanel(new GridLayout(3,1));
         pnlCenter.setBackground(Color.getColor("",ColorPalette.getBodyPanel()));
-        lblNadpis = new JLabel("Employe Login"); pnlCenter.add(lblNadpis);
+        lblNadpis = new JLabel("Customer Login"); pnlCenter.add(lblNadpis);
         pnlRows = new JPanel(new GridLayout(3,2));
         lblName = new JLabel("Name: "); pnlRows.add(lblName);
         tfName = new JTextField(); pnlRows.add(tfName);
@@ -33,7 +34,8 @@ public class CustomerLoginSide extends JFrame {
         btnBack.setBackground(Color.getColor("",ColorPalette.getBackGround()));
         btnBack.setForeground(Color.getColor("",ColorPalette.getForeGround()));
         btnBack.addActionListener(e -> {
-            //TODO
+            close();
+            new FirstFrame().setVisible(true);
         });
         btnLogin = new JButton("Login"); pnlRows.add(btnLogin);
         btnLogin.setBackground(Color.getColor("",ColorPalette.getBackGround()));
@@ -55,5 +57,11 @@ public class CustomerLoginSide extends JFrame {
     //Main
     public static void main(String[] args){
         new CustomerLoginSide().setVisible(true);
+    }
+
+
+    public void close(){
+        WindowEvent closeWindow = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
+        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closeWindow);
     }
 }

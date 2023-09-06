@@ -2,6 +2,7 @@ package org.example.GUI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowEvent;
 
 public class FirstFrame extends JFrame {
     //Komponenty
@@ -11,7 +12,7 @@ public class FirstFrame extends JFrame {
     //Konstruktor
     public FirstFrame(){
         InitGUI();
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setTitle("Bank Management System");
         setSize(640,480);
     }
@@ -29,14 +30,15 @@ public class FirstFrame extends JFrame {
                     btnEmploye.setBackground(Color.getColor("",ColorPalette.getBackGround()));
                     btnEmploye.setForeground(Color.getColor("",ColorPalette.getForeGround()));
                     btnEmploye.addActionListener(e -> {
-                        //TODO open Employe Loggin frame
-                        //new EmployeLoginSide().setVisible(true);
+                        close();
+                        new EmployeLoginSide().setVisible(true);
                     });
                     btnCustomer = new JButton("Customer"); pnlRow.add(btnCustomer);
                     btnCustomer.setBackground(Color.getColor("",ColorPalette.getBackGround()));
                     btnCustomer.setForeground(Color.getColor("",ColorPalette.getForeGround()));
                     btnCustomer.addActionListener(e -> {
-                        //TODO open Customer Loggin frame
+                        close();
+                        new CustomerLoginSide().setVisible(true);
                     });
                 pnlCenter.add(pnlRow);
                 pnlCenter.setBackground(Color.getColor("",ColorPalette.getBodyPanel()));
@@ -53,4 +55,11 @@ public class FirstFrame extends JFrame {
     public static void main(String[] args){
         new FirstFrame().setVisible(true);
     }
+
+    public void close(){
+        WindowEvent closeWindow = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
+        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closeWindow);
+    }
+
 }
+

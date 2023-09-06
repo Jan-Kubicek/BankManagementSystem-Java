@@ -2,6 +2,7 @@ package org.example.GUI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowEvent;
 
 public class EmployeLoginSide extends JFrame {
     //Komponenty
@@ -13,7 +14,7 @@ public class EmployeLoginSide extends JFrame {
     //Konstruktor
     public EmployeLoginSide(){
         InitGUI();
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setSize(640,480);
         setTitle("Employe login side");
     }
@@ -36,7 +37,8 @@ public class EmployeLoginSide extends JFrame {
                 btnBack.setBackground(Color.getColor("",ColorPalette.getBackGround()));
                 btnBack.setForeground(Color.getColor("",ColorPalette.getForeGround()));
                 btnBack.addActionListener(e -> {
-                    //TODO
+                    close();
+                    new FirstFrame().setVisible(true);
                 });
                 btnLogin = new JButton("Login"); pnlRows.add(btnLogin);
                 btnLogin.setBackground(Color.getColor("",ColorPalette.getBackGround()));
@@ -58,5 +60,11 @@ public class EmployeLoginSide extends JFrame {
     //Main
     public static void main(String[] args){
         new EmployeLoginSide().setVisible(true);
+    }
+
+
+    public void close(){
+        WindowEvent closeWindow = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
+        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closeWindow);
     }
 }
