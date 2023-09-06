@@ -27,6 +27,7 @@ public class FirstFrame extends JFrame {
                     btnEmploye = new JButton("Employe"); pnlRow.add(btnEmploye);
                     btnEmploye.addActionListener(e -> {
                         //TODO open Employe Loggin frame
+                        //new EmployeLoginSide().setVisible(true);
                     });
                     btnCustomer = new JButton("Customer"); pnlRow.add(btnCustomer);
                     btnCustomer.addActionListener(e -> {
