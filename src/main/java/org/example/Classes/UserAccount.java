@@ -4,6 +4,7 @@ import org.example.Exceptions.OutOfRangeException;
 import org.example.Exceptions.SameAtributeException;
 
 import java.time.LocalDateTime;
+import java.util.Random;
 
 final class UserAccount extends Account{
     //Atributes
@@ -13,9 +14,10 @@ final class UserAccount extends Account{
     private float financialLimits;
 
     //Konstructors
-    public UserAccount(String firstName, String lastName, String degree, String email, String id, LocalDateTime since, String telephoneNumber, String password, String sex, LocalDateTime dateOfBirth, boolean darkMode, int pinCode){
-        this.Email = email; this.ID = id; this.since = since; this.telephoneNumber = telephoneNumber; this.password = password; this.sex = sex; this.dateOfBirth = dateOfBirth; this.darkMode = darkMode; this.accountPinCode = pinCode;
+    public UserAccount(String firstName, String lastName, String degree, String email, LocalDateTime since, String telephoneNumber, String password, String sex, LocalDateTime dateOfBirth, boolean darkMode, int pinCode){
+        this.Email = email; this.since = since; this.telephoneNumber = telephoneNumber; this.password = password; this.sex = sex; this.dateOfBirth = dateOfBirth; this.darkMode = darkMode; this.accountPinCode = pinCode;
         this.name = degree+" "+firstName+" "+lastName;
+        this.ID = generateIdForUser(firstName,lastName);
         this.accountBalance = 0;
         this.financialLimits = 5000; // Standart financial limit for OutCome => it could be changed
         //Adress must be added manually => Adress must be initialized seperated and after that connected;
@@ -152,7 +154,14 @@ final class UserAccount extends Account{
 
     @Override
     public void setSince(LocalDateTime newSince) {
-
+        try{
+            if(since.toString().equals(newSince.toString())){
+                throw new SameAtributeException();
+            }
+            else{this.since = newSince;}
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -162,7 +171,19 @@ final class UserAccount extends Account{
 
     @Override
     public void setTelephoneNumber(String newTelephoneNumber) {
-
+        try{
+            if(this.telephoneNumber.equals(newTelephoneNumber)){
+                throw new SameAtributeException();
+            }
+            if(newTelephoneNumber.length() != 9){
+                throw new OutOfRangeException();
+            }
+            else{
+                this.telephoneNumber = newTelephoneNumber;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -172,7 +193,16 @@ final class UserAccount extends Account{
 
     @Override
     public void setPassword(String newPassword) {
-
+        try{
+            if(password.equals(newPassword)){
+                throw new SameAtributeException();
+            }
+            else {
+                this.password = newPassword;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -182,7 +212,16 @@ final class UserAccount extends Account{
 
     @Override
     public void setSex(String newSex) {
-
+        try{
+               if(sex.equals(newSex)){
+                   throw new SameAtributeException();
+               }
+               else{
+                   this.sex = newSex;
+               }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -192,7 +231,16 @@ final class UserAccount extends Account{
 
     @Override
     public void setDateOfBirth(LocalDateTime newDateOfBirth) {
-
+        try{
+                if(this.dateOfBirth.toString().equals(newDateOfBirth.toString())){
+                    throw new SameAtributeException();
+                }
+                else{
+                    this.dateOfBirth = newDateOfBirth;
+                }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -202,7 +250,16 @@ final class UserAccount extends Account{
 
     @Override
     public void setAccountAdress(Adress newAdress) {
-
+        try{
+                if(accountAdress.toString().equals(newAdress.toString())){
+                    throw new SameAtributeException();
+                }
+                else{
+                    this.accountAdress = newAdress;
+                }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -212,9 +269,39 @@ final class UserAccount extends Account{
 
     public String generateIdForUser(){
         String us ="US";
-            //TODO PARSING of name to xxx of firstname xx of last name and random 5 digite Number
-            //Try to find someone with same id if => yes = new id if => no set this ID
-        String id = "";
-        return id;
+        String[] tokens = name.split("");           //Degree + FirstName + LastName
+        StringBuilder first = new StringBuilder();
+        for ( int i = 0; i < 3;  i++){
+            first.append(tokens[1].charAt(i));
+        }
+        StringBuilder second= new StringBuilder();
+        for(int i = 0 ; i < 2; i++){
+            second.append(tokens[2].charAt(i));
+        }
+        String number;
+        Random randomNumber = new Random();
+        number = String.valueOf(randomNumber.nextInt(9999 - 1));
+
+        // if this id is not selected => add to this account => must create colection of Accounts
+        String id = us+first+second+number;
+        return id.toUpperCase();
+    }
+    public String generateIdForUser(String firstName, String lastName){
+        String us = "US";
+        StringBuilder first = new StringBuilder();
+        for ( int i = 0; i < 3;  i++){
+            first.append(firstName.charAt(i));
+        }
+        StringBuilder second= new StringBuilder();
+        for(int i = 0 ; i < 2; i++){
+            second.append(lastName.charAt(i));
+        }
+        String number;
+        Random randomNumber = new Random();
+        number = String.valueOf(randomNumber.nextInt(9999 - 1));
+
+        // if this id is not selected => add to this account => must create colection of Accounts
+        String id = us+first+second+number;
+        return id.toUpperCase();
     }
 }
