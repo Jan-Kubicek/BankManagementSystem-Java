@@ -37,7 +37,7 @@ public class UserSide extends JFrame {
         pnlCenter = new JPanel(new GridLayout(2,1));
             //Upper Center
             pnlUpper = new JPanel( new GridLayout(4,2));
-                btnCustomizedProfile = new JButton("Custom your Profile");
+                btnCustomizedProfile = new JButton("Customize Profile");
                 btnCustomizedProfile.setBackground(Color.getColor("",ColorPalette.getBackGround()));
                 btnCustomizedProfile.setForeground(Color.getColor("",ColorPalette.getForeGround()));
                 btnCustomizedProfile.addActionListener(e -> {
