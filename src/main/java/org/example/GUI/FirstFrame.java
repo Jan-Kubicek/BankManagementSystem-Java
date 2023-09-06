@@ -7,7 +7,7 @@ public class FirstFrame extends JFrame {
     //Komponenty
         JLabel lbNadpis;
         JButton btnEmploye, btnCustomer;
-        JPanel pnlCenter, pnlRow, pnlEmptyRow;
+        JPanel pnlCenter, pnlRow, pnlEmptyRow, pnlEast, pnlWest;
     //Konstruktor
     public FirstFrame(){
         InitGUI();
@@ -21,25 +21,29 @@ public class FirstFrame extends JFrame {
                 lbNadpis = new JLabel("Welcome in Banking Management System"); pnlCenter.add(lbNadpis);
                 for(int i = 0; i < 5; i ++){
                     pnlCenter.add(pnlEmptyRow = new JPanel());
-                    pnlEmptyRow.setBackground(Color.yellow);
+                    pnlEmptyRow.setBackground(Color.getColor("",ColorPalette.getBodyPanel()));
                 }
                 pnlRow = new JPanel(new GridLayout(1,2));
                     btnEmploye = new JButton("Employe"); pnlRow.add(btnEmploye);
-                    btnEmploye.setBackground(Color.darkGray);
-                    btnEmploye.setForeground(Color.white);
+                    btnEmploye.setBackground(Color.getColor("",ColorPalette.getBackGround()));
+                    btnEmploye.setForeground(Color.getColor("",ColorPalette.getForeGround()));
                     btnEmploye.addActionListener(e -> {
                         //TODO open Employe Loggin frame
                         //new EmployeLoginSide().setVisible(true);
                     });
                     btnCustomer = new JButton("Customer"); pnlRow.add(btnCustomer);
-                    btnCustomer.setBackground(Color.darkGray);
-                    btnCustomer.setForeground(Color.white);
+                    btnCustomer.setBackground(Color.getColor("",ColorPalette.getBackGround()));
+                    btnCustomer.setForeground(Color.getColor("",ColorPalette.getForeGround()));
                     btnCustomer.addActionListener(e -> {
                         //TODO open Customer Loggin frame
                     });
                 pnlCenter.add(pnlRow);
-                pnlCenter.setBackground(Color.yellow);
+                pnlCenter.setBackground(Color.getColor("",ColorPalette.getBodyPanel()));
         add(pnlCenter,BorderLayout.CENTER);
+        pnlEast = new JPanel(); pnlEast.setBackground(Color.getColor("",ColorPalette.getSidePannels()));
+        add(pnlEast,BorderLayout.EAST);
+        pnlWest = new JPanel(); pnlWest.setBackground(Color.getColor("",ColorPalette.getSidePannels()));
+        add(pnlWest, BorderLayout.WEST);
         pack();
     }
     //Main
