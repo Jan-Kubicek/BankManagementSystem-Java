@@ -20,6 +20,9 @@ public class Adress {
             if(this.nameOfTown.equals(newNameOfTown)){
                 throw new SameAtributeException();
             }
+            else{
+                this.nameOfTown = newNameOfTown;
+            }
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -34,6 +37,9 @@ public class Adress {
             if(this.street.equals(newStreet)){
                 throw new SameAtributeException();
             }
+            else{
+                this.street = newStreet;
+            }
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -44,6 +50,9 @@ public class Adress {
         try {
             if(newNumberOfHouse == numberOfHouse){
                 throw new SameAtributeException();
+            }
+            else{
+                this.numberOfHouse = newNumberOfHouse;
             }
         }catch (Exception e){
             e.printStackTrace();
