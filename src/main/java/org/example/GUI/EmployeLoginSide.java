@@ -29,16 +29,22 @@ public class EmployeLoginSide extends JFrame {
                 tfPassword = new JPasswordField(); pnlRows.add(tfPassword);
                 lblBranch = new JLabel("Branche: "); pnlRows.add(lblBranch);
                 Choice branches = new Choice();
-                //TODO set branches for selecting
+                    //TODO set branches for selecting
                 pnlRows.add(branches);
                 btnBack = new JButton("Back"); pnlRows.add(btnBack);
+                btnBack.setBackground(Color.darkGray);
+                btnBack.setForeground(Color.white);
                 btnBack.addActionListener(e -> {
                     //TODO
                 });
                 btnLogin = new JButton("Login"); pnlRows.add(btnLogin);
+                btnLogin.setBackground(Color.darkGray);
+                btnLogin.setForeground(Color.white);
                 btnLogin.addActionListener(e -> {
                     //TODO
                 });
+            pnlRows.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
+            pnlRows.setBackground(Color.gray);
             pnlCenter.add(pnlRows);
         pnlEmptyRow = new JPanel(); pnlEmptyRow.setBackground(Color.yellow); pnlCenter.add(pnlEmptyRow);
         add(pnlCenter,BorderLayout.CENTER);

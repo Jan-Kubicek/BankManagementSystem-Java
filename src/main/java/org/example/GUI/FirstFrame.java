@@ -25,11 +25,15 @@ public class FirstFrame extends JFrame {
                 }
                 pnlRow = new JPanel(new GridLayout(1,2));
                     btnEmploye = new JButton("Employe"); pnlRow.add(btnEmploye);
+                    btnEmploye.setBackground(Color.darkGray);
+                    btnEmploye.setForeground(Color.white);
                     btnEmploye.addActionListener(e -> {
                         //TODO open Employe Loggin frame
                         //new EmployeLoginSide().setVisible(true);
                     });
                     btnCustomer = new JButton("Customer"); pnlRow.add(btnCustomer);
+                    btnCustomer.setBackground(Color.darkGray);
+                    btnCustomer.setForeground(Color.white);
                     btnCustomer.addActionListener(e -> {
                         //TODO open Customer Loggin frame
                     });
