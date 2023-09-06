@@ -1,6 +1,7 @@
 package org.example.GUI;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
 public class EmployeSide extends JFrame {
@@ -24,7 +25,7 @@ public class EmployeSide extends JFrame {
             lbAdmin = new JLabel("Admin"); pnlNorth.add(lbAdmin);
             //TODO after login this label will be name of Admin
             lbBranch = new JLabel("Branch: ");pnlNorth.add(lbBranch);
-            lbCurrentBranch = new JLabel("Actual Branch"); pnlNorth.add(lbName);
+            lbCurrentBranch = new JLabel("Actual Branch"); pnlNorth.add(lbCurrentBranch);
             //TODO after login this label will be name of selected Branch
         add(pnlNorth,BorderLayout.NORTH);
         //East
@@ -43,16 +44,61 @@ public class EmployeSide extends JFrame {
                 btnCreateUserAcc.setBackground(Color.getColor("",ColorPalette.getBackGround()));
                 btnCreateUserAcc.setForeground(Color.getColor("",ColorPalette.getForeGround()));
                 btnCreateUserAcc.addActionListener(e -> {
-
+                    //TODO
                 });pnlUpperCenter.add(btnCreateUserAcc);
+                btnCreateAdminAcc = new JButton("Create Admins account");
+                btnCreateAdminAcc.setBackground(Color.getColor("",ColorPalette.getBackGround()));
+                btnCreateAdminAcc.setForeground(Color.getColor("",ColorPalette.getForeGround()));
+                btnCreateAdminAcc.addActionListener(e -> {
+                   //TODO
+                });pnlUpperCenter.add(btnCreateAdminAcc);
+                btnCheckAccounts = new JButton("Check Accounts");
+                btnCheckAccounts.setBackground(Color.getColor("",ColorPalette.getBackGround()));
+                btnCheckAccounts.setForeground(Color.getColor("",ColorPalette.getForeGround()));
+                btnCheckAccounts.addActionListener(e -> {
+                    //TODO
+                });pnlUpperCenter.add(btnCheckAccounts);
+                btnExit = new JButton("Exit");
+                btnExit.setBackground(Color.getColor("",ColorPalette.getBackGround()));
+                btnExit.setForeground(Color.getColor("",ColorPalette.getForeGround()));
+                btnExit.addActionListener(e -> {
+                    //TODO
+                });pnlUpperCenter.add(btnExit);
             pnlCenter.add(pnlUpperCenter);
             //Bottom Center
             pnlBottomCenter = new JPanel(new BorderLayout());
                 //Bottom Center - Center
                 pnlBottomCenterCenter = new JPanel(new GridLayout(1,1));
+                    DefaultTableModel model = new DefaultTableModel();
+                        model.addColumn("ID");
+                        model.addColumn("Name");
+                        model.addColumn("Since");
+                        model.addColumn("Balance");
+                        model.addColumn("Email");
+                        model.addColumn("Telephone Numer");
+                    table = new JTable(model);
+                    pnlBottomCenterCenter.add(new JScrollPane(table));
                 pnlBottomCenter.add(pnlBottomCenterCenter,BorderLayout.CENTER);
                 //Bottom Center - East
                 pnlBottomCenterEast = new JPanel(new GridLayout(3,1));
+                    btnCustomizeProfile = new JButton("Customize Profile");
+                    btnCustomizeProfile.setBackground(Color.getColor("",ColorPalette.getBackGround()));
+                    btnCustomizeProfile.setForeground(Color.getColor("",ColorPalette.getForeGround()));
+                    btnCustomizeProfile.addActionListener(e -> {
+                        //TODO
+                    });pnlBottomCenterEast.add(btnCustomizeProfile);
+                    btnDeleteAcc = new JButton("Delete account");
+                    btnDeleteAcc.setBackground(Color.getColor("",ColorPalette.getBackGround()));
+                    btnDeleteAcc.setForeground(Color.getColor("",ColorPalette.getForeGround()));
+                    btnDeleteAcc.addActionListener(e -> {
+                        //TODO
+                    });pnlBottomCenterEast.add(btnDeleteAcc);
+                    btnReset = new JButton("Reset");
+                    btnReset.setBackground(Color.getColor("",ColorPalette.getBackGround()));
+                    btnReset.setForeground(Color.getColor("",ColorPalette.getForeGround()));
+                    btnReset.addActionListener(e -> {
+                        //TODO
+                    });pnlBottomCenterEast.add(btnReset);
                 pnlBottomCenter.add(pnlBottomCenterEast,BorderLayout.EAST);
             pnlCenter.add(pnlBottomCenter);
         add(pnlCenter,BorderLayout.CENTER);
