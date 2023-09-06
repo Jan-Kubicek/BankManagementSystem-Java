@@ -3,8 +3,6 @@ package org.example.Classes;
 import org.example.Exceptions.OutOfRangeException;
 import org.example.Exceptions.SameAtributeException;
 
-import javax.swing.*;
-
 public class Adress {
     //Atributes
     public String nameOfTown, street;
