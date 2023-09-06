@@ -17,6 +17,7 @@ public class FirstFrame extends JFrame {
     }
     //GUI
     public void InitGUI(){
+        //Center
         pnlCenter = new JPanel(new GridLayout(7,1));
                 lbNadpis = new JLabel("Welcome in Banking Management System"); pnlCenter.add(lbNadpis);
                 for(int i = 0; i < 5; i ++){
@@ -40,8 +41,10 @@ public class FirstFrame extends JFrame {
                 pnlCenter.add(pnlRow);
                 pnlCenter.setBackground(Color.getColor("",ColorPalette.getBodyPanel()));
         add(pnlCenter,BorderLayout.CENTER);
+        //East
         pnlEast = new JPanel(); pnlEast.setBackground(Color.getColor("",ColorPalette.getSidePannels()));
         add(pnlEast,BorderLayout.EAST);
+        //West
         pnlWest = new JPanel(); pnlWest.setBackground(Color.getColor("",ColorPalette.getSidePannels()));
         add(pnlWest, BorderLayout.WEST);
         pack();

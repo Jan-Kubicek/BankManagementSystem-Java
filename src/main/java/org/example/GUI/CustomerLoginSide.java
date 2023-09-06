@@ -20,6 +20,7 @@ public class CustomerLoginSide extends JFrame {
     }
     //GUI
     public void InitGUI(){
+        //Center
         pnlCenter = new JPanel(new GridLayout(3,1));
         pnlCenter.setBackground(Color.getColor("",ColorPalette.getBodyPanel()));
         lblNadpis = new JLabel("Employe Login"); pnlCenter.add(lblNadpis);
@@ -45,7 +46,9 @@ public class CustomerLoginSide extends JFrame {
         pnlCenter.add(pnlRows);
         pnlEmptyRow = new JPanel(); pnlEmptyRow.setBackground(Color.getColor("",ColorPalette.getBodyPanel())); pnlCenter.add(pnlEmptyRow);
         add(pnlCenter,BorderLayout.CENTER);
+        //East
         pnlEast = new JPanel(); pnlEast.setBackground(Color.getColor("",ColorPalette.getSidePannels())); add(pnlEast,BorderLayout.EAST);
+        //West
         pnlWest = new JPanel(); pnlWest.setBackground(Color.getColor("",ColorPalette.getSidePannels())); add(pnlWest,BorderLayout.WEST);
         pack();
     }
