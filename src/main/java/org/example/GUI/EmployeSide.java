@@ -20,7 +20,12 @@ public class EmployeSide extends JFrame {
     public void InitGUI(){
         //North
         pnlNorth  = new JPanel(new GridLayout(1,4));
-
+            lbName = new JLabel("Name: "); pnlNorth.add(lbName);
+            lbAdmin = new JLabel("Admin"); pnlNorth.add(lbAdmin);
+            //TODO after login this label will be name of Admin
+            lbBranch = new JLabel("Branch: ");pnlNorth.add(lbBranch);
+            lbCurrentBranch = new JLabel("Actual Branch"); pnlNorth.add(lbName);
+            //TODO after login this label will be name of selected Branch
         add(pnlNorth,BorderLayout.NORTH);
         //East
         pnlEast = new JPanel();
@@ -34,6 +39,12 @@ public class EmployeSide extends JFrame {
         pnlCenter = new JPanel( new GridLayout(2,1));
             //Upper Center
             pnlUpperCenter = new JPanel(new GridLayout(2,2));
+                btnCreateUserAcc = new JButton("Create Users account");
+                btnCreateUserAcc.setBackground(Color.getColor("",ColorPalette.getBackGround()));
+                btnCreateUserAcc.setForeground(Color.getColor("",ColorPalette.getForeGround()));
+                btnCreateUserAcc.addActionListener(e -> {
+
+                });pnlUpperCenter.add(btnCreateUserAcc);
             pnlCenter.add(pnlUpperCenter);
             //Bottom Center
             pnlBottomCenter = new JPanel(new BorderLayout());
