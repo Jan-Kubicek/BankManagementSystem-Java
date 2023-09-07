@@ -17,4 +17,15 @@ public class CollectionOfAdminAccounts {
         }
         return isOccupied;
     }
+    public static boolean adminLogin(String name, String password){
+        boolean login = false;
+        for(AdminAccount adminAccount : collectionOfAdmins){
+            if(adminAccount.getName().equals(name)){
+                if(adminAccount.getPassword().equals(password)){
+                    login = true;
+                }
+            }
+        }
+        return login;
+    }
 }

@@ -44,9 +44,10 @@ public class CustomerLoginSide extends JFrame {
             String name = tfName.getText();
             String password = tfPassword.getText();
             if(userLogin(name,password)){
+                new UserSide();
+                UserSide.setNameOfUser(name);
                 close();
                 new UserSide().setVisible(true);
-                UserSide.setNameOfUser(name);
             }
             else{
                 JOptionPane.showMessageDialog(this,"Wrong name or password was entered","Not logged in",JOptionPane.INFORMATION_MESSAGE);

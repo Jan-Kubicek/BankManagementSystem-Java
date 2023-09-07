@@ -67,8 +67,8 @@ public class FirstFrame extends JFrame {
     public static void setUser(){
         UserAccount user = new UserAccount("jan","kubicek","bc","email@seznam.cz", LocalDateTime.MIN,"731357202","heslo","men",LocalDateTime.MAX,false,3333);
         CollectionOfUsersAccounts.addUser(user);
-        System.out.print(user.name);
-        System.out.print(user.password);
+        AdminAccount admin = new AdminAccount("jan","kubicek","bc","email@seznam.cz",LocalDateTime.MIN,"731357202","heslo","men",LocalDateTime.MAX);
+        CollectionOfAdminAccounts.addAdmin(admin);
     }
 
 }

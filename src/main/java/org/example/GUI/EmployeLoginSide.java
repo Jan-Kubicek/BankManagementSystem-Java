@@ -3,6 +3,7 @@ package org.example.GUI;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowEvent;
+import static org.example.GUI.CollectionOfAdminAccounts.*;
 
 public class EmployeLoginSide extends JFrame {
     //Komponenty
@@ -31,7 +32,12 @@ public class EmployeLoginSide extends JFrame {
                 tfPassword = new JPasswordField(); pnlRows.add(tfPassword);
                 lblBranch = new JLabel("Branche: "); pnlRows.add(lblBranch);
                 Choice branches = new Choice();
-                    //TODO set branches for selecting
+                    branches.add("Dobruska");
+                    branches.add("Hradec Kralove");
+                    branches.add("Nachod");
+                    branches.add("Praha");
+                    branches.add("Pardubice");
+                    branches.add("Liberec");
                 pnlRows.add(branches);
                 btnBack = new JButton("Back"); pnlRows.add(btnBack);
                 btnBack.setBackground(Color.getColor("",ColorPalette.getBackGround()));
@@ -44,7 +50,19 @@ public class EmployeLoginSide extends JFrame {
                 btnLogin.setBackground(Color.getColor("",ColorPalette.getBackGround()));
                 btnLogin.setForeground(Color.getColor("",ColorPalette.getForeGround()));
                 btnLogin.addActionListener(e -> {
-                    //TODO
+                    String name = tfName.getText();
+                    String password = tfPassword.getText();
+                    String branche = branches.getSelectedItem();
+                    if(adminLogin(name, password)){
+                        new EmployeSide();
+                        EmployeSide.setNameOfAdmin(name);
+                        EmployeSide.setBranche(branche);
+                        close();
+                        new EmployeSide().setVisible(true);
+                    }
+                    else {
+                        JOptionPane.showMessageDialog(this,"Wrong name or password was entered","Not logged in",JOptionPane.INFORMATION_MESSAGE);
+                    }
                 });
             pnlRows.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
             pnlRows.setBackground(Color.getColor("",ColorPalette.getFormPanel()));

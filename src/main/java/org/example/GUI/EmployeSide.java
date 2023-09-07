@@ -6,6 +6,9 @@ import java.awt.*;
 import java.awt.event.WindowEvent;
 
 public class EmployeSide extends JFrame {
+    //Atributes
+    public static String nameOfLoggedAdmin, branche;
+
     //Komponenty
     JTable table;
     JButton btnCreateUserAcc, btnCreateAdminAcc, btnCheckAccounts, btnExit, btnCustomizeProfile, btnDeleteAcc, btnReset;
@@ -23,10 +26,10 @@ public class EmployeSide extends JFrame {
         //North
         pnlNorth  = new JPanel(new GridLayout(1,4));
             lbName = new JLabel("Name: "); pnlNorth.add(lbName);
-            lbAdmin = new JLabel("Admin"); pnlNorth.add(lbAdmin);
+            lbAdmin = new JLabel(getNameOfLoggedAdmin()); pnlNorth.add(lbAdmin);
             //TODO after login this label will be name of Admin
             lbBranch = new JLabel("Branch: ");pnlNorth.add(lbBranch);
-            lbCurrentBranch = new JLabel("Actual Branch"); pnlNorth.add(lbCurrentBranch);
+            lbCurrentBranch = new JLabel(getNameOfBranche()); pnlNorth.add(lbCurrentBranch);
             //TODO after login this label will be name of selected Branch
         add(pnlNorth,BorderLayout.NORTH);
         //East
@@ -104,7 +107,6 @@ public class EmployeSide extends JFrame {
                 pnlBottomCenter.add(pnlBottomCenterEast,BorderLayout.EAST);
             pnlCenter.add(pnlBottomCenter);
         add(pnlCenter,BorderLayout.CENTER);
-
         pack();
     }
     //Main
@@ -116,4 +118,11 @@ public class EmployeSide extends JFrame {
         WindowEvent closeWindow = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closeWindow);
     }
+    public static void setNameOfAdmin(String name){
+        nameOfLoggedAdmin = name;
+    }
+
+    public static String getNameOfLoggedAdmin(){return nameOfLoggedAdmin;}
+    public static void  setBranche(String brancheN){ branche = brancheN;}
+    public static String getNameOfBranche(){return branche;}
 }
