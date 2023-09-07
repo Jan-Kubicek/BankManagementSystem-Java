@@ -3,7 +3,6 @@ package org.example.GUI;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowEvent;
-import java.io.PrintWriter;
 import java.time.LocalDateTime;
 
 public class FirstFrame extends JFrame {

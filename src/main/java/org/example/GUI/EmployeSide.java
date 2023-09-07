@@ -27,10 +27,8 @@ public class EmployeSide extends JFrame {
         pnlNorth  = new JPanel(new GridLayout(1,4));
             lbName = new JLabel("Name: "); pnlNorth.add(lbName);
             lbAdmin = new JLabel(getNameOfLoggedAdmin()); pnlNorth.add(lbAdmin);
-            //TODO after login this label will be name of Admin
             lbBranch = new JLabel("Branch: ");pnlNorth.add(lbBranch);
             lbCurrentBranch = new JLabel(getNameOfBranche()); pnlNorth.add(lbCurrentBranch);
-            //TODO after login this label will be name of selected Branch
         add(pnlNorth,BorderLayout.NORTH);
         //East
         pnlEast = new JPanel();
@@ -60,7 +58,8 @@ public class EmployeSide extends JFrame {
                 btnCheckAccounts.setBackground(Color.getColor("",ColorPalette.getBackGround()));
                 btnCheckAccounts.setForeground(Color.getColor("",ColorPalette.getForeGround()));
                 btnCheckAccounts.addActionListener(e -> {
-                    //TODO
+                    int numberOfUsersAccount = CollectionOfUsersAccounts.collectionOfUsers.size();
+                    JOptionPane.showMessageDialog(this,"Number of Users accounts right now is: "+numberOfUsersAccount,"Number of Users",JOptionPane.INFORMATION_MESSAGE);
                 });pnlUpperCenter.add(btnCheckAccounts);
                 btnExit = new JButton("Exit");
                 btnExit.setBackground(Color.getColor("",ColorPalette.getBackGround()));
