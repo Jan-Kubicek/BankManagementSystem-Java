@@ -1,6 +1,7 @@
 package org.example.Classes;
 
 import java.time.LocalDateTime;
+import java.util.Random;
 
 public class Transaction {
     //Atributes
@@ -8,6 +9,7 @@ public class Transaction {
     public UserAccount incommingAccount;
     public float amountOfMoney;
     public LocalDateTime dateOfTransaction;
+    public String id;
     //Konstructor
     public Transaction(UserAccount outgoingAccount, UserAccount incommingAccount, float amountOfMoney){
         this.outgoingAccount=outgoingAccount;
@@ -23,4 +25,24 @@ public class Transaction {
     public UserAccount getIncommingAccount(){return incommingAccount;}
     public float getAmountOfMoney(){return amountOfMoney;}
     public LocalDateTime getDateOfTransaction(){return dateOfTransaction;}
+    public String getId(){return  id;}
+    public String generateIdOfTransaction(String outgoingAcc, String incommingAcc){
+        String TRS ="TRS";
+        StringBuilder outg = null;
+        StringBuilder incg = null;
+        String result;
+        for (int i = 0 ; i < 3; i++){
+            outg.append(outgoingAcc.charAt(i));
+            incg.append(incommingAcc.charAt(i));
+        }
+        Random random = new Random();
+        String number = String.valueOf(random.nextInt(99999 - 1));
+        String id = TRS+outg+incg+number;
+        if(!CollectionOfTransactions.isIdOccupied(id)){
+            result = id;
+        }else{
+            result = null;
+        }
+        return result;
+    }
 }
