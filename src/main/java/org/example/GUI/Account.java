@@ -1,5 +1,8 @@
 package org.example.GUI;
 
+import org.example.Exceptions.OutOfRangeException;
+import org.example.Exceptions.SameAtributeException;
+
 import java.time.LocalDateTime;
 
 abstract class Account {
@@ -11,22 +14,22 @@ abstract class Account {
     //Konstruktory
 
     //Metody
-    public abstract void setName(String newName);
+    public abstract void setName(String newName) throws SameAtributeException, OutOfRangeException;
     public abstract String getName();
-    public abstract void setEmail(String newEmail);
+    public abstract void setEmail(String newEmail) throws SameAtributeException, OutOfRangeException;
     public abstract String getEmail();
-    public abstract void setID(String newID);
+    public abstract void setID(String newID) throws SameAtributeException, OutOfRangeException;
     public abstract String getID();
-    public abstract void setSince(LocalDateTime newSince);
+    public abstract void setSince(LocalDateTime newSince) throws SameAtributeException;
     public abstract LocalDateTime getSince();
-    public abstract void setTelephoneNumber(String newTelephoneNumber);
+    public abstract void setTelephoneNumber(String newTelephoneNumber) throws SameAtributeException, OutOfRangeException;
     public abstract String getTelephoneNumber();
-    public abstract void setPassword(String newPassword);
+    public abstract void setPassword(String newPassword) throws SameAtributeException;
     public abstract String getPassword();
-    public abstract void setSex(String newSex);
+    public abstract void setSex(String newSex) throws SameAtributeException;
     public abstract String getSex();
-    public abstract void setDateOfBirth(LocalDateTime newDateOfBirth);
+    public abstract void setDateOfBirth(LocalDateTime newDateOfBirth) throws SameAtributeException;
     public abstract LocalDateTime getDateOfBirth();
-    public abstract void setAccountAdress(Adress newAdress);
+    public abstract void setAccountAdress(Adress newAdress) throws SameAtributeException;
     public abstract Adress getAccountAdress();
 }

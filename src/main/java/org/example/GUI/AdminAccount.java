@@ -17,18 +17,14 @@ public class AdminAccount extends Account{
 
     //Methods
     @Override
-    public void setName(String newName) {
-        try{
-            if(this.name.equals(newName)){
-                throw new SameAtributeException();
-            }
-            if(newName.length()  < 5 || newName.length() > 45){
-                throw new OutOfRangeException();
-            }
-            else{this.name = newName;}
-        }catch (Exception e){
-            e.printStackTrace();
+    public void setName(String newName) throws SameAtributeException, OutOfRangeException {
+        if(this.name.equals(newName)){
+            throw new SameAtributeException();
         }
+        if(newName.length()  < 5 || newName.length() > 45){
+            throw new OutOfRangeException();
+        }
+        else{this.name = newName;}
     }
 
     @Override
@@ -37,22 +33,18 @@ public class AdminAccount extends Account{
     }
 
     @Override
-    public void setEmail(String newEmail) {
-        try{
-            if(this.Email.equals(newEmail)){
-                throw new SameAtributeException();
-            }
-            if(newEmail.length() < 4 || newEmail.length() > 30 ){
-                throw new OutOfRangeException();
-            }
-            if(!newEmail.contains("@")){
-                throw new IllegalArgumentException();
-            }
-            else{
-                this.Email = newEmail;
-            }
-        }catch (Exception e){
-            e.printStackTrace();
+    public void setEmail(String newEmail) throws SameAtributeException, OutOfRangeException, IllegalArgumentException {
+        if(this.Email.equals(newEmail)){
+            throw new SameAtributeException();
+        }
+        if(newEmail.length() < 4 || newEmail.length() > 30 ){
+            throw new OutOfRangeException();
+        }
+        if(!newEmail.contains("@")){
+            throw new IllegalArgumentException();
+        }
+        else{
+            this.Email = newEmail;
         }
     }
 
@@ -62,19 +54,15 @@ public class AdminAccount extends Account{
     }
 
     @Override
-    public void setID(String newID) {
-        try{
-            if(ID.equals(newID)){
-                throw new SameAtributeException();
-            }
-            if(newID.length() != 12){
-                throw new OutOfRangeException();
-            }
-            else{
-                this.ID = newID;
-            }
-        }catch (Exception e){
-            e.printStackTrace();
+    public void setID(String newID) throws SameAtributeException, OutOfRangeException {
+        if(ID.equals(newID)){
+            throw new SameAtributeException();
+        }
+        if(newID.length() != 12){
+            throw new OutOfRangeException();
+        }
+        else{
+            this.ID = newID;
         }
     }
 
@@ -84,15 +72,11 @@ public class AdminAccount extends Account{
     }
 
     @Override
-    public void setSince(LocalDateTime newSince) {
-        try{
-            if(since.toString().equals(newSince.toString())){
-                throw new SameAtributeException();
-            }
-            else{this.since = newSince;}
-        }catch (Exception e){
-            e.printStackTrace();
+    public void setSince(LocalDateTime newSince) throws SameAtributeException {
+        if(since.toString().equals(newSince.toString())){
+            throw new SameAtributeException();
         }
+        else{this.since = newSince;}
     }
 
     @Override
@@ -101,19 +85,15 @@ public class AdminAccount extends Account{
     }
 
     @Override
-    public void setTelephoneNumber(String newTelephoneNumber) {
-        try{
-            if(this.telephoneNumber.equals(newTelephoneNumber)){
-                throw new SameAtributeException();
-            }
-            if(newTelephoneNumber.length() != 9){
-                throw new OutOfRangeException();
-            }
-            else{
-                this.telephoneNumber = newTelephoneNumber;
-            }
-        }catch (Exception e){
-            e.printStackTrace();
+    public void setTelephoneNumber(String newTelephoneNumber) throws SameAtributeException, OutOfRangeException {
+        if(this.telephoneNumber.equals(newTelephoneNumber)){
+            throw new SameAtributeException();
+        }
+        if(newTelephoneNumber.length() != 9){
+            throw new OutOfRangeException();
+        }
+        else{
+            this.telephoneNumber = newTelephoneNumber;
         }
     }
 
@@ -123,16 +103,12 @@ public class AdminAccount extends Account{
     }
 
     @Override
-    public void setPassword(String newPassword) {
-        try{
-            if(password.equals(newPassword)){
-                throw new SameAtributeException();
-            }
-            else {
-                this.password = newPassword;
-            }
-        }catch(Exception e){
-            e.printStackTrace();
+    public void setPassword(String newPassword) throws SameAtributeException {
+        if(password.equals(newPassword)){
+            throw new SameAtributeException();
+        }
+        else {
+            this.password = newPassword;
         }
     }
 
@@ -142,16 +118,12 @@ public class AdminAccount extends Account{
     }
 
     @Override
-    public void setSex(String newSex) {
-        try{
-            if(sex.equals(newSex)){
-                throw new SameAtributeException();
-            }
-            else{
-                this.sex = newSex;
-            }
-        }catch (Exception e){
-            e.printStackTrace();
+    public void setSex(String newSex) throws SameAtributeException {
+        if(sex.equals(newSex)){
+            throw new SameAtributeException();
+        }
+        else{
+            this.sex = newSex;
         }
     }
 
@@ -161,16 +133,12 @@ public class AdminAccount extends Account{
     }
 
     @Override
-    public void setDateOfBirth(LocalDateTime newDateOfBirth) {
-        try{
-            if(this.dateOfBirth.toString().equals(newDateOfBirth.toString())){
-                throw new SameAtributeException();
-            }
-            else{
-                this.dateOfBirth = newDateOfBirth;
-            }
-        }catch(Exception e){
-            e.printStackTrace();
+    public void setDateOfBirth(LocalDateTime newDateOfBirth) throws SameAtributeException {
+        if(this.dateOfBirth.toString().equals(newDateOfBirth.toString())){
+            throw new SameAtributeException();
+        }
+        else{
+            this.dateOfBirth = newDateOfBirth;
         }
     }
 
@@ -180,16 +148,12 @@ public class AdminAccount extends Account{
     }
 
     @Override
-    public void setAccountAdress(Adress newAdress) {
-        try{
-            if(accountAdress.toString().equals(newAdress.toString())){
-                throw new SameAtributeException();
-            }
-            else{
-                this.accountAdress = newAdress;
-            }
-        }catch (Exception e){
-            e.printStackTrace();
+    public void setAccountAdress(Adress newAdress) throws SameAtributeException {
+        if(accountAdress.toString().equals(newAdress.toString())){
+            throw new SameAtributeException();
+        }
+        else{
+            this.accountAdress = newAdress;
         }
     }
 

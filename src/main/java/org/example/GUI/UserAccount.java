@@ -28,36 +28,27 @@ final class UserAccount extends Account{
         accountBalance += amount;
     }
 
-    public void outCome(double amount){
-        try{
+    public void outCome(double amount) throws OutOfRangeException {
             if(amount > financialLimits){
                 throw new OutOfRangeException();
             }else{
                 accountBalance -= amount;
             }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
     }
 
-    public void setFinancialLimits(float financialLimits){
-        try{
+    public void setFinancialLimits(float financialLimits) throws OutOfRangeException {
              if(this.financialLimits == financialLimits){
                  throw new OutOfRangeException();
              }
              else{
                  this.financialLimits = financialLimits;
              }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
     }
 
     public float getFinancialLimits(){return financialLimits;}
     public float getAccountBalance(){return accountBalance;}
 
-    public void setAccountPinCode(int newPinCode){
-        try{
+    public void setAccountPinCode(int newPinCode) throws SameAtributeException, OutOfRangeException {
             if(accountPinCode == newPinCode){
                 throw new SameAtributeException();
             }
@@ -65,29 +56,22 @@ final class UserAccount extends Account{
                 throw new OutOfRangeException();
             }
             else{this.accountPinCode = newPinCode;}
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+
     }
     public int getAccountPinCode(){return accountPinCode;}
 
-    public void setDarkMode(boolean darkMode){
-        try{
+    public void setDarkMode(boolean darkMode) throws SameAtributeException {
             if(this.darkMode == darkMode){
                 throw new SameAtributeException();
             }else{
                 this.darkMode = darkMode;
             }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
     }
 
     public boolean getDarkMode(){return darkMode;}
 
     @Override
-    public void setName(String newName) {
-        try{
+    public void setName(String newName) throws SameAtributeException, OutOfRangeException {
             if(this.name.equals(newName)){
                 throw new SameAtributeException();
             }
@@ -95,9 +79,6 @@ final class UserAccount extends Account{
                 throw new OutOfRangeException();
             }
             else{this.name = newName;}
-        }catch (Exception e){
-            e.printStackTrace();
-        }
     }
 
     @Override
@@ -106,8 +87,7 @@ final class UserAccount extends Account{
     }
 
     @Override
-    public void setEmail(String newEmail) {
-        try{
+    public void setEmail(String newEmail) throws SameAtributeException, OutOfRangeException, IllegalArgumentException {
             if(this.Email.equals(newEmail)){
                 throw new SameAtributeException();
             }
@@ -120,9 +100,6 @@ final class UserAccount extends Account{
             else{
                 this.Email = newEmail;
             }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
     }
 
     @Override
@@ -131,8 +108,7 @@ final class UserAccount extends Account{
     }
 
     @Override
-    public void setID(String newID) {
-        try{
+    public void setID(String newID) throws SameAtributeException, OutOfRangeException {
             if(ID.equals(newID)){
                 throw new SameAtributeException();
             }
@@ -142,9 +118,6 @@ final class UserAccount extends Account{
             else{
                 this.ID = newID;
             }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
     }
 
     @Override
@@ -153,15 +126,11 @@ final class UserAccount extends Account{
     }
 
     @Override
-    public void setSince(LocalDateTime newSince) {
-        try{
+    public void setSince(LocalDateTime newSince) throws SameAtributeException {
             if(since.toString().equals(newSince.toString())){
                 throw new SameAtributeException();
             }
             else{this.since = newSince;}
-        }catch (Exception e){
-            e.printStackTrace();
-        }
     }
 
     @Override
@@ -170,8 +139,7 @@ final class UserAccount extends Account{
     }
 
     @Override
-    public void setTelephoneNumber(String newTelephoneNumber) {
-        try{
+    public void setTelephoneNumber(String newTelephoneNumber) throws SameAtributeException, OutOfRangeException {
             if(this.telephoneNumber.equals(newTelephoneNumber)){
                 throw new SameAtributeException();
             }
@@ -181,9 +149,6 @@ final class UserAccount extends Account{
             else{
                 this.telephoneNumber = newTelephoneNumber;
             }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
     }
 
     @Override
@@ -192,17 +157,13 @@ final class UserAccount extends Account{
     }
 
     @Override
-    public void setPassword(String newPassword) {
-        try{
+    public void setPassword(String newPassword) throws SameAtributeException {
             if(password.equals(newPassword)){
                 throw new SameAtributeException();
             }
             else {
                 this.password = newPassword;
             }
-        }catch(Exception e){
-            e.printStackTrace();
-        }
     }
 
     @Override
@@ -211,17 +172,13 @@ final class UserAccount extends Account{
     }
 
     @Override
-    public void setSex(String newSex) {
-        try{
+    public void setSex(String newSex) throws SameAtributeException {
                if(sex.equals(newSex)){
                    throw new SameAtributeException();
                }
                else{
                    this.sex = newSex;
                }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
     }
 
     @Override
@@ -230,17 +187,13 @@ final class UserAccount extends Account{
     }
 
     @Override
-    public void setDateOfBirth(LocalDateTime newDateOfBirth) {
-        try{
+    public void setDateOfBirth(LocalDateTime newDateOfBirth) throws SameAtributeException {
                 if(this.dateOfBirth.toString().equals(newDateOfBirth.toString())){
                     throw new SameAtributeException();
                 }
                 else{
                     this.dateOfBirth = newDateOfBirth;
                 }
-        }catch(Exception e){
-            e.printStackTrace();
-        }
     }
 
     @Override
@@ -249,17 +202,13 @@ final class UserAccount extends Account{
     }
 
     @Override
-    public void setAccountAdress(Adress newAdress) {
-        try{
+    public void setAccountAdress(Adress newAdress) throws SameAtributeException {
                 if(accountAdress.toString().equals(newAdress.toString())){
                     throw new SameAtributeException();
                 }
                 else{
                     this.accountAdress = newAdress;
                 }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
     }
 
     @Override
