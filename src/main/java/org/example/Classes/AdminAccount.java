@@ -6,85 +6,16 @@ import org.example.Exceptions.SameAtributeException;
 import java.time.LocalDateTime;
 import java.util.Random;
 
-final class UserAccount extends Account{
-    //Atributes
-    private float accountBalance;
-    private int accountPinCode;
-    private boolean darkMode;
-    private float financialLimits;
-
-    //Konstructors
-    public UserAccount(String firstName, String lastName, String degree, String email, LocalDateTime since, String telephoneNumber, String password, String sex, LocalDateTime dateOfBirth, boolean darkMode, int pinCode){
-        this.Email = email; this.since = since; this.telephoneNumber = telephoneNumber; this.password = password; this.sex = sex; this.dateOfBirth = dateOfBirth; this.darkMode = darkMode; this.accountPinCode = pinCode;
+public class AdminAccount extends Account{
+    //Konstructor
+    public AdminAccount(String firstName, String lastName, String degree, String email, LocalDateTime since, String telephoneNumber, String password, String sex, LocalDateTime dateOfBirth){
+        this.Email = email; this.since = since; this.telephoneNumber = telephoneNumber; this.password = password; this.sex = sex; this.dateOfBirth = dateOfBirth;
         this.name = degree+" "+firstName+" "+lastName;
-        this.ID = generateIdForUser(firstName,lastName);
-        this.accountBalance = 0;
-        this.financialLimits = 5000; // Standart financial limit for OutCome => it could be changed
+        this.ID = generateIdForAdmin(firstName,lastName);
         //Adress must be added manually => Adress must be initialized seperated and after that connected;
     }
 
     //Methods
-    public void inCome(double amount){
-        accountBalance += amount;
-    }
-
-    public void outCome(double amount){
-        try{
-            if(amount > financialLimits){
-                throw new OutOfRangeException();
-            }else{
-                accountBalance -= amount;
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-
-    public void setFinancialLimits(float financialLimits){
-        try{
-             if(this.financialLimits == financialLimits){
-                 throw new OutOfRangeException();
-             }
-             else{
-                 this.financialLimits = financialLimits;
-             }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-
-    public float getFinancialLimits(){return financialLimits;}
-    public float getAccountBalance(){return accountBalance;}
-
-    public void setAccountPinCode(int newPinCode){
-        try{
-            if(accountPinCode == newPinCode){
-                throw new SameAtributeException();
-            }
-            if(newPinCode > 9999){
-                throw new OutOfRangeException();
-            }
-            else{this.accountPinCode = newPinCode;}
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-    public int getAccountPinCode(){return accountPinCode;}
-
-    public void setDarkMode(boolean darkMode){
-        try{
-            if(this.darkMode == darkMode){
-                throw new SameAtributeException();
-            }else{
-                this.darkMode = darkMode;
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-
-    public boolean getDarkMode(){return darkMode;}
-
     @Override
     public void setName(String newName) {
         try{
@@ -213,12 +144,12 @@ final class UserAccount extends Account{
     @Override
     public void setSex(String newSex) {
         try{
-               if(sex.equals(newSex)){
-                   throw new SameAtributeException();
-               }
-               else{
-                   this.sex = newSex;
-               }
+            if(sex.equals(newSex)){
+                throw new SameAtributeException();
+            }
+            else{
+                this.sex = newSex;
+            }
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -232,12 +163,12 @@ final class UserAccount extends Account{
     @Override
     public void setDateOfBirth(LocalDateTime newDateOfBirth) {
         try{
-                if(this.dateOfBirth.toString().equals(newDateOfBirth.toString())){
-                    throw new SameAtributeException();
-                }
-                else{
-                    this.dateOfBirth = newDateOfBirth;
-                }
+            if(this.dateOfBirth.toString().equals(newDateOfBirth.toString())){
+                throw new SameAtributeException();
+            }
+            else{
+                this.dateOfBirth = newDateOfBirth;
+            }
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -251,12 +182,12 @@ final class UserAccount extends Account{
     @Override
     public void setAccountAdress(Adress newAdress) {
         try{
-                if(accountAdress.toString().equals(newAdress.toString())){
-                    throw new SameAtributeException();
-                }
-                else{
-                    this.accountAdress = newAdress;
-                }
+            if(accountAdress.toString().equals(newAdress.toString())){
+                throw new SameAtributeException();
+            }
+            else{
+                this.accountAdress = newAdress;
+            }
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -267,8 +198,8 @@ final class UserAccount extends Account{
         return accountAdress;
     }
 
-    public String generateIdForUser(){
-        String us ="US";
+    public String generateIdForAdmin(){
+        String ad ="AD";
         String[] tokens = name.split("");           //Degree + FirstName + LastName
         StringBuilder first = new StringBuilder();
         for ( int i = 0; i < 3;  i++){
@@ -280,17 +211,17 @@ final class UserAccount extends Account{
         }
         String number;
         Random randomNumber = new Random();
-        number = String.valueOf(randomNumber.nextInt(99999 - 1));
+        number = String.valueOf(randomNumber.nextInt(9999 - 1));
         String result;
-        String id = us+first+second+number;
+        String id = ad+first+second+number;
         if(!CollectionOfUsersAccounts.isIdOccupied(id)){
             result = id.toUpperCase();
         }
         else { result = null; }
         return result;
     }
-    public String generateIdForUser(String firstName, String lastName){
-        String us = "US";
+    public String generateIdForAdmin(String firstName, String lastName){
+        String ad = "AD";
         String result;
         StringBuilder first = new StringBuilder();
         for ( int i = 0; i < 3;  i++){
@@ -302,12 +233,12 @@ final class UserAccount extends Account{
         }
         String number;
         Random randomNumber = new Random();
-        number = String.valueOf(randomNumber.nextInt(99999 - 1));
-        String id = us+first+second+number;
+        number = String.valueOf(randomNumber.nextInt(9999 - 1));
+        String id = ad+first+second+number;
         if(!CollectionOfUsersAccounts.isIdOccupied(id)){
             result = id.toUpperCase();
         }
         else { result = null; }
-       return result;
+        return result;
     }
 }
