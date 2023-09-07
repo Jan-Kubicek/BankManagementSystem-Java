@@ -4,8 +4,6 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.WindowEvent;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 
 public class EmployeSide extends JFrame {
@@ -48,22 +46,18 @@ public class EmployeSide extends JFrame {
                 btnCreateUserAcc = new JButton("Create Users account");
                 btnCreateUserAcc.setBackground(Color.getColor("",ColorPalette.getBackGround()));
                 btnCreateUserAcc.setForeground(Color.getColor("",ColorPalette.getForeGround()));
-                btnCreateUserAcc.addActionListener(e -> {
-                    new CreateUsersAccount().setVisible(true);
-                });pnlUpperCenter.add(btnCreateUserAcc);
+                btnCreateUserAcc.addActionListener(e -> new CreateUsersAccount().setVisible(true));pnlUpperCenter.add(btnCreateUserAcc);
                 btnCreateAdminAcc = new JButton("Create Admins account");
                 btnCreateAdminAcc.setBackground(Color.getColor("",ColorPalette.getBackGround()));
                 btnCreateAdminAcc.setForeground(Color.getColor("",ColorPalette.getForeGround()));
-                btnCreateAdminAcc.addActionListener(e -> {
-                   new CreateAdminsAccount().setVisible(true);
-                });pnlUpperCenter.add(btnCreateAdminAcc);
+                btnCreateAdminAcc.addActionListener(e -> new CreateAdminsAccount().setVisible(true));pnlUpperCenter.add(btnCreateAdminAcc);
                 btnCheckAccounts = new JButton("Check Accounts");
                 btnCheckAccounts.setBackground(Color.getColor("",ColorPalette.getBackGround()));
                 btnCheckAccounts.setForeground(Color.getColor("",ColorPalette.getForeGround()));
                 btnCheckAccounts.addActionListener(e -> {
                     int numberOfAdminsAccounts = CollectionOfAdminAccounts.collectionOfAdmins.size();
                     int numberOfUsersAccount = CollectionOfUsersAccounts.collectionOfUsers.size();
-                    int sum = numberOfAdminsAccounts + numberOfAdminsAccounts;
+                    int sum = numberOfAdminsAccounts + numberOfUsersAccount;
                     JOptionPane.showMessageDialog(this,"Number of Account right now is: "+sum,"Number of Users and Admins",JOptionPane.INFORMATION_MESSAGE);
                 });pnlUpperCenter.add(btnCheckAccounts);
                 btnExit = new JButton("Exit");
@@ -101,7 +95,33 @@ public class EmployeSide extends JFrame {
                     btnDeleteAcc.setBackground(Color.getColor("",ColorPalette.getBackGround()));
                     btnDeleteAcc.setForeground(Color.getColor("",ColorPalette.getForeGround()));
                     btnDeleteAcc.addActionListener(e -> {
-                        //TODO
+                        int indexOfRow = table.getSelectedRow();
+                        String idOfAccount = table.getValueAt(indexOfRow,0).toString();
+                        StringBuilder typeOfAccount = new StringBuilder();
+                        int indexOfAccount = -1;
+                        for(int i = 0; i < 2 ; i++){
+                            typeOfAccount.append(idOfAccount.charAt(i));
+                        }
+                        if( typeOfAccount.toString().equals("US")){
+                            for(int i = 0; i < CollectionOfUsersAccounts.collectionOfUsers.size(); i++){
+                                if(CollectionOfUsersAccounts.collectionOfUsers.get(i).ID.equals(idOfAccount)){
+                                    indexOfAccount = i;
+                                }
+                            }
+                            if(indexOfAccount != -1) {
+                                CollectionOfUsersAccounts.removeUser(indexOfAccount);
+                            }
+                        }
+                        if(typeOfAccount.toString().equals("AD")) {
+                            for (int i = 0; i < CollectionOfAdminAccounts.collectionOfAdmins.size(); i++) {
+                                if (CollectionOfAdminAccounts.collectionOfAdmins.get(i).ID.equals(idOfAccount)) {
+                                    indexOfAccount = i;
+                                }
+                            }
+                            if (indexOfAccount != -1) {
+                                CollectionOfAdminAccounts.removeAdmin(indexOfAccount);
+                            }
+                        }
                     });pnlBottomCenterEast.add(btnDeleteAcc);
                     btnReset = new JButton("Reset");
                     btnReset.setBackground(Color.getColor("",ColorPalette.getBackGround()));
