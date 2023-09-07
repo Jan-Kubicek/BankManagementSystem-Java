@@ -44,7 +44,12 @@ public class WithdrawMoney extends JFrame {
             for(int i = 0 ; i < CollectionOfUsersAccounts.collectionOfUsers.size(); i++){
                 if(CollectionOfUsersAccounts.collectionOfUsers.get(i).ID.equals(idOfUser)){
                     UserAccount userAccount = CollectionOfUsersAccounts.collectionOfUsers.get(i);
-                    userAccount.outCome(amoutOfMoney);
+                    try {
+                        userAccount.outCome(amoutOfMoney);
+                    }catch (Exception a){
+                        JOptionPane.showMessageDialog(this,a.getMessage(),"ERROR",JOptionPane.ERROR_MESSAGE);
+                        break;
+                    }
                     JOptionPane.showMessageDialog(this,"Withdraw of money was Suscesfully","Confirm",JOptionPane.INFORMATION_MESSAGE);
                     close();
                 }

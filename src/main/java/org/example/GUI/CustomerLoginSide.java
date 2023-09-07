@@ -45,9 +45,9 @@ public class CustomerLoginSide extends JFrame {
             String password = tfPassword.getText();
             String id = "";
             if(userLogin(name,password)){
-                for(int i = 0; i < collectionOfUsers.size(); i++){
-                    if(collectionOfUsers.get(i).name.equals(name)){
-                        id = collectionOfUsers.get(i).ID;
+                for (UserAccount collectionOfUser : collectionOfUsers) {
+                    if (collectionOfUser.name.equals(name)) {
+                        id = collectionOfUser.ID;
                     }
                 }
                 new UserSide();

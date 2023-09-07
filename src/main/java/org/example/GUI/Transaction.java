@@ -14,7 +14,11 @@ public class Transaction {
     public Transaction(UserAccount outgoingAccount, UserAccount incommingAccount, float amountOfMoney){
         this.outgoingAccount=outgoingAccount;
         this.incommingAccount=incommingAccount;
-        outgoingAccount.outCome(amountOfMoney);
+        try{
+            outgoingAccount.outCome(amountOfMoney);
+        }catch (Exception exception){
+            exception.printStackTrace();
+        }
         incommingAccount.inCome(amountOfMoney);
         this.amountOfMoney = amountOfMoney;
         this.dateOfTransaction = LocalDateTime.now();
@@ -32,8 +36,12 @@ public class Transaction {
         StringBuilder incg = null;
         String result;
         for (int i = 0 ; i < 3; i++){
-            outg.append(outgoingAcc.charAt(i));
-            incg.append(incommingAcc.charAt(i));
+            try{
+                outg.append(outgoingAcc.charAt(i));
+                incg.append(incommingAcc.charAt(i));
+            }catch (Exception e){
+                e.printStackTrace();
+            }
         }
         Random random = new Random();
         String number = String.valueOf(random.nextInt(99999 - 1));

@@ -43,7 +43,12 @@ public class ChangePinCode extends JFrame {
             int newPinCode = Integer.parseInt(tfChangePin.getText());
             for(int i = 0; i < CollectionOfUsersAccounts.collectionOfUsers.size(); i ++){
                 if(CollectionOfUsersAccounts.collectionOfUsers.get(i).ID.equals(idOfUser)){
-                    CollectionOfUsersAccounts.collectionOfUsers.get(i).setAccountPinCode(newPinCode);
+                    try{
+                        CollectionOfUsersAccounts.collectionOfUsers.get(i).setAccountPinCode(newPinCode);
+                    }catch (Exception exception){
+                        JOptionPane.showMessageDialog(this,exception.getMessage(),"ERROR",JOptionPane.ERROR_MESSAGE);
+                        break;
+                    }
                     JOptionPane.showMessageDialog(this,"Pin Code was changed Successfully","Confirm",JOptionPane.INFORMATION_MESSAGE);
                     close();
                 }

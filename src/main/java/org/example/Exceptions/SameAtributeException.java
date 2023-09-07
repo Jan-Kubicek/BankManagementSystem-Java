@@ -2,6 +2,6 @@ package org.example.Exceptions;
 
 public class SameAtributeException extends Exception {
     public SameAtributeException(){
-        super("Atribute is same as old one !!");
+        super("Value is same as old one !!");
     }
 }

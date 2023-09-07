@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 public class CreateUsersAccount extends JFrame {
     //Komponents
-    JLabel lbFirstName, lbLastName, lbDegree, lbEmail, lbTel, lbSex, lbDateOfBirth, lbDarkM, lbYes, lbNo, lbPin, lbPassword;
+    JLabel lbFirstName, lbLastName, lbDegree, lbEmail, lbTel, lbSex, lbDateOfBirth, lbDarkM, lbPin, lbPassword;
     JButton btnExit, btnCreate;
     JTextField tfFirstName, tfLastName, tfDegree, tfEmail, tfTelephone, tfSex, tfPin, tfPassword, tfDateOfBirth;
     JRadioButton rbtnYes, rbtnNo;
