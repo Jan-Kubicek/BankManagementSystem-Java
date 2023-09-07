@@ -56,9 +56,8 @@ public class UserSide extends JFrame {
                 btnInsertMoney = new JButton("Insert Money");
                 btnInsertMoney.setForeground(Color.getColor("",ColorPalette.getForeGround()));
                 btnInsertMoney.setBackground(Color.getColor("",ColorPalette.getBackGround()));
-                btnInsertMoney.addActionListener(e -> {
-                    new InsertMoney().setVisible(true);
-                });pnlUpper.add(btnInsertMoney);
+                btnInsertMoney.addActionListener(e -> new InsertMoney().setVisible(true));
+                pnlUpper.add(btnInsertMoney);
                 btnSettings = new JButton("Settings");
                 btnSettings.setBackground(Color.getColor("",ColorPalette.getBackGround()));
                 btnSettings.setForeground(Color.getColor("",ColorPalette.getForeGround()));
@@ -68,9 +67,8 @@ public class UserSide extends JFrame {
                 btnWithdrawMoney = new JButton("Withdraw Money");
                 btnWithdrawMoney.setBackground(Color.getColor("",ColorPalette.getBackGround()));
                 btnWithdrawMoney.setForeground(Color.getColor("",ColorPalette.getForeGround()));
-                btnWithdrawMoney.addActionListener(e -> {
-                    //TODO
-                });pnlUpper.add(btnWithdrawMoney);
+                btnWithdrawMoney.addActionListener(e -> new WithdrawMoney().setVisible(true));
+                pnlUpper.add(btnWithdrawMoney);
                 btnChangePinCode = new JButton("Change PIN");
                 btnChangePinCode.setBackground(Color.getColor("",ColorPalette.getBackGround()));
                 btnChangePinCode.setForeground(Color.getColor("",ColorPalette.getForeGround()));
