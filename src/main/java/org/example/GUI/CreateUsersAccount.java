@@ -48,11 +48,7 @@ public class CreateUsersAccount extends JFrame {
                     int pin = Integer.parseInt(tfPin.getText());
                     String password = tfPassword.getText();
                     boolean darkMode ;
-                    if(rbtnYes.isSelected()){
-                        darkMode=true;
-                    }else{
-                        darkMode=false;
-                    }
+                    darkMode= rbtnYes.isSelected();
                     String dateOfBirth = tfDateOfBirth.getText();
                     int hour = 0;
                     int minute = 0;
@@ -68,9 +64,7 @@ public class CreateUsersAccount extends JFrame {
                 btnExit = new JButton("Exit");
                 btnExit.setBackground(Color.getColor("",ColorPalette.getBackGround()));
                 btnExit.setForeground(Color.getColor("",ColorPalette.getForeGround()));
-                btnExit.addActionListener(e -> {
-                    close();
-                });pnlRow7.add(btnExit);
+                btnExit.addActionListener(e -> close());pnlRow7.add(btnExit);
             pnlSouth.add(pnlRow7);
         add(pnlSouth,BorderLayout.SOUTH);
 
