@@ -4,17 +4,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowEvent;
 
-public class WithdrawMoney extends JFrame {
+public class ChangePinCode extends JFrame {
     //Komponents
-    JLabel lbWithdraw;
+    JLabel lbChangePin;
     JButton btnSubmit;
     JPanel pnlCenter, pnlSouth, pnlEast, pnlWest;
-    JTextField tfWithdraw;
+    JTextField tfChangePin;
 
     //Konstructor
-    public WithdrawMoney(){
+    public ChangePinCode(){
         InitGUI();
-        setTitle("Withdraw Money");
+        setTitle("Change Pin Code");
         setSize(640,480);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
@@ -22,8 +22,8 @@ public class WithdrawMoney extends JFrame {
     public void InitGUI(){
         //Center
         pnlCenter = new JPanel(new GridLayout(1,2));
-        lbWithdraw = new JLabel("Insert amount of money");pnlCenter.add(lbWithdraw);
-        tfWithdraw = new JTextField();pnlCenter.add(tfWithdraw);
+        lbChangePin = new JLabel("ChangePin");pnlCenter.add(lbChangePin);
+        tfChangePin = new JTextField();pnlCenter.add(tfChangePin);
         add(pnlCenter,BorderLayout.CENTER);
         //West
         pnlWest = new JPanel();
@@ -39,13 +39,12 @@ public class WithdrawMoney extends JFrame {
         btnSubmit.setBackground(Color.getColor("",ColorPalette.getBackGround()));
         btnSubmit.setForeground(Color.getColor("",ColorPalette.getForeGround()));
         btnSubmit.addActionListener(e -> {
-            float amoutOfMoney = Float.parseFloat(tfWithdraw.getText());
             String idOfUser = UserSide.getIdOfLoggedUser();
-            for(int i = 0 ; i < CollectionOfUsersAccounts.collectionOfUsers.size(); i++){
+            int newPinCode = Integer.parseInt(tfChangePin.getText());
+            for(int i = 0; i < CollectionOfUsersAccounts.collectionOfUsers.size(); i ++){
                 if(CollectionOfUsersAccounts.collectionOfUsers.get(i).ID.equals(idOfUser)){
-                    UserAccount userAccount = CollectionOfUsersAccounts.collectionOfUsers.get(i);
-                    userAccount.outCome(amoutOfMoney);
-                    JOptionPane.showMessageDialog(this,"Withdraw of money was Suscesfully","Confirm",JOptionPane.INFORMATION_MESSAGE);
+                    CollectionOfUsersAccounts.collectionOfUsers.get(i).setAccountPinCode(newPinCode);
+                    JOptionPane.showMessageDialog(this,"Pin Code was changed Successfully","Confirm",JOptionPane.INFORMATION_MESSAGE);
                     close();
                 }
             }
@@ -56,7 +55,7 @@ public class WithdrawMoney extends JFrame {
     }
     //Main
     public static void main(String[] args){
-        new WithdrawMoney().setVisible(true);
+        new ChangePinCode().setVisible(true);
     }
 
     public void close(){

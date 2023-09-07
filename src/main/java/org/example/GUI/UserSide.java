@@ -72,9 +72,8 @@ public class UserSide extends JFrame {
                 btnChangePinCode = new JButton("Change PIN");
                 btnChangePinCode.setBackground(Color.getColor("",ColorPalette.getBackGround()));
                 btnChangePinCode.setForeground(Color.getColor("",ColorPalette.getForeGround()));
-                btnChangePinCode.addActionListener(e -> {
-                    //TODO
-                });pnlUpper.add(btnChangePinCode);
+                btnChangePinCode.addActionListener(e -> new ChangePinCode().setVisible(true));
+                pnlUpper.add(btnChangePinCode);
                 btnMakeTransaction = new JButton("Make Transaction");
                 btnMakeTransaction.setBackground(Color.getColor("",ColorPalette.getBackGround()));
                 btnMakeTransaction.setForeground(Color.getColor("",ColorPalette.getForeGround()));
