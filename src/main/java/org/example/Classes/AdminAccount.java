@@ -214,7 +214,7 @@ public class AdminAccount extends Account{
         number = String.valueOf(randomNumber.nextInt(9999 - 1));
         String result;
         String id = ad+first+second+number;
-        if(!CollectionOfUsersAccounts.isIdOccupied(id)){
+        if(!CollectionOfAdminAccounts.isIdOfAdminOccupied(id)){
             result = id.toUpperCase();
         }
         else { result = null; }
@@ -235,7 +235,7 @@ public class AdminAccount extends Account{
         Random randomNumber = new Random();
         number = String.valueOf(randomNumber.nextInt(9999 - 1));
         String id = ad+first+second+number;
-        if(!CollectionOfUsersAccounts.isIdOccupied(id)){
+        if(!CollectionOfAdminAccounts.isIdOfAdminOccupied(id)){
             result = id.toUpperCase();
         }
         else { result = null; }
