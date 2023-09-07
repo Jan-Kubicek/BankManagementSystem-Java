@@ -43,8 +43,15 @@ public class CustomerLoginSide extends JFrame {
         btnLogin.addActionListener(e -> {
             String name = tfName.getText();
             String password = tfPassword.getText();
+            String id = "";
             if(userLogin(name,password)){
+                for(int i = 0; i < collectionOfUsers.size(); i++){
+                    if(collectionOfUsers.get(i).name.equals(name)){
+                        id = collectionOfUsers.get(i).ID;
+                    }
+                }
                 new UserSide();
+                UserSide.setIdOfLoggedUser(id);
                 UserSide.setNameOfUser(name);
                 close();
                 new UserSide().setVisible(true);

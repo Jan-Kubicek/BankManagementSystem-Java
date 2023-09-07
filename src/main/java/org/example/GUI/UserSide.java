@@ -7,10 +7,10 @@ import java.awt.event.WindowEvent;
 
 public class UserSide extends JFrame {
     //Atribute
-    public static String nameOfLoggedUser;
+    public static String nameOfLoggedUser, IdOfLoggedUser;
 
     //Komponenty
-    JLabel lbName, lbUserName;
+    JLabel lbName, lbUserName, lbId;
     JTable table;
     JButton btnCustomizedProfile, btnInsertMoney, btnWithdrawMoney, btnMakeTransaction, btnPrintAllTransactions, btnSettings, btnChangePinCode, btnExit, btnRemoveRow, btnClear, btnPrintTransactions;
     JPanel pnlNorth, pnlCenter, pnlWest, pnlEast, pnlUpper, pnlBottom, pnlEastBottom, pnlCenterBottom;
@@ -24,10 +24,10 @@ public class UserSide extends JFrame {
     //GUI
     public void InitGUI(){
         //North
-        pnlNorth = new JPanel(new GridLayout(1,2));
+        pnlNorth = new JPanel(new GridLayout(1,3));
             lbName = new JLabel("Name: "); pnlNorth.add(lbName);
             lbUserName = new JLabel(getNameOfLoggedUser()); pnlNorth.add(lbUserName);
-            //TODO => after login lbUserName is AccountName of logined User
+            lbId = new JLabel(getIdOfLoggedUser()); pnlNorth.add(lbId);
         add(pnlNorth, BorderLayout.NORTH);
         //East
         pnlEast = new JPanel();
@@ -57,7 +57,7 @@ public class UserSide extends JFrame {
                 btnInsertMoney.setForeground(Color.getColor("",ColorPalette.getForeGround()));
                 btnInsertMoney.setBackground(Color.getColor("",ColorPalette.getBackGround()));
                 btnInsertMoney.addActionListener(e -> {
-                    //TODO
+                    new InsertMoney().setVisible(true);
                 });pnlUpper.add(btnInsertMoney);
                 btnSettings = new JButton("Settings");
                 btnSettings.setBackground(Color.getColor("",ColorPalette.getBackGround()));
@@ -146,4 +146,6 @@ public class UserSide extends JFrame {
     }
 
     public static String getNameOfLoggedUser(){return nameOfLoggedUser;}
+    public static void setIdOfLoggedUser(String id){ IdOfLoggedUser = id;}
+    public static String getIdOfLoggedUser(){return IdOfLoggedUser;}
 }
