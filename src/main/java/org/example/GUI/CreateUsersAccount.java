@@ -39,6 +39,7 @@ public class CreateUsersAccount extends JFrame {
                 btnCreate.setBackground(Color.getColor("",ColorPalette.getBackGround()));
                 btnCreate.setForeground(Color.getColor("",ColorPalette.getForeGround()));
                 btnCreate.addActionListener(e -> {
+                    boolean add = true;
                     String firstName = tfFirstName.getText();
                     String lastName = tfLastName.getText();
                     String degree = tfDegree.getText();
@@ -59,7 +60,21 @@ public class CreateUsersAccount extends JFrame {
                     }
                     LocalDateTime dateOfBirthLDT = LocalDateTime.of(numbers[2],numbers[1],numbers[0],hour,minute);
                     UserAccount userAccount = new UserAccount(firstName,lastName,degree,email,LocalDateTime.now(),telephoneNumber,password,sex,dateOfBirthLDT,darkMode,pin);
-                    CollectionOfUsersAccounts.addUser(userAccount);
+                    for(int i = 0; i < CollectionOfUsersAccounts.collectionOfUsers.size(); i++){
+                        UserAccount userAcc = CollectionOfUsersAccounts.collectionOfUsers.get(i);
+                        if(userAccount.name.equals(userAcc.name)){
+                            if(userAccount.Email.equals(userAcc.Email)){
+                                if(userAccount.telephoneNumber.equals(userAcc.telephoneNumber)){
+                                    JOptionPane.showMessageDialog(this,"This Account is already exist","ERROR",JOptionPane.ERROR_MESSAGE);
+                                    add = false;
+                                }
+                            }
+                        }
+                    }
+                    if(add){
+                        CollectionOfUsersAccounts.addUser(userAccount);
+                        JOptionPane.showMessageDialog(this,"New Account was Successfully created","Information",JOptionPane.INFORMATION_MESSAGE);
+                    }
                 });pnlRow7.add(btnCreate);
                 btnExit = new JButton("Exit");
                 btnExit.setBackground(Color.getColor("",ColorPalette.getBackGround()));

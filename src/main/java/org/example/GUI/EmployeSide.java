@@ -55,14 +55,16 @@ public class EmployeSide extends JFrame {
                 btnCreateAdminAcc.setBackground(Color.getColor("",ColorPalette.getBackGround()));
                 btnCreateAdminAcc.setForeground(Color.getColor("",ColorPalette.getForeGround()));
                 btnCreateAdminAcc.addActionListener(e -> {
-                   //TODO
+                   new CreateAdminsAccount().setVisible(true);
                 });pnlUpperCenter.add(btnCreateAdminAcc);
                 btnCheckAccounts = new JButton("Check Accounts");
                 btnCheckAccounts.setBackground(Color.getColor("",ColorPalette.getBackGround()));
                 btnCheckAccounts.setForeground(Color.getColor("",ColorPalette.getForeGround()));
                 btnCheckAccounts.addActionListener(e -> {
+                    int numberOfAdminsAccounts = CollectionOfAdminAccounts.collectionOfAdmins.size();
                     int numberOfUsersAccount = CollectionOfUsersAccounts.collectionOfUsers.size();
-                    JOptionPane.showMessageDialog(this,"Number of Users accounts right now is: "+numberOfUsersAccount,"Number of Users",JOptionPane.INFORMATION_MESSAGE);
+                    int sum = numberOfAdminsAccounts + numberOfAdminsAccounts;
+                    JOptionPane.showMessageDialog(this,"Number of Account right now is: "+sum,"Number of Users and Admins",JOptionPane.INFORMATION_MESSAGE);
                 });pnlUpperCenter.add(btnCheckAccounts);
                 btnExit = new JButton("Exit");
                 btnExit.setBackground(Color.getColor("",ColorPalette.getBackGround()));
@@ -111,6 +113,11 @@ public class EmployeSide extends JFrame {
                             UserAccount userAccount = CollectionOfUsersAccounts.collectionOfUsers.get(i);
                             String formatedDateOfBirth = userAccount.since.format(format);
                             model.addRow(new Object[]{userAccount.getID(),userAccount.getName(),formatedDateOfBirth,userAccount.getAccountBalance(),userAccount.getEmail(),userAccount.getTelephoneNumber()});
+                        }
+                        for (int i = 0; i < CollectionOfAdminAccounts.collectionOfAdmins.size(); i ++){
+                            AdminAccount adminAccount = CollectionOfAdminAccounts.collectionOfAdmins.get(i);
+                            String formatedDateOfBirth = adminAccount.since.format(format);
+                            model.addRow(new Object[]{adminAccount.getID(),adminAccount.getName(),formatedDateOfBirth,null,adminAccount.getEmail(),adminAccount.getTelephoneNumber()});
                         }
                     });pnlBottomCenterEast.add(btnReset);
                 pnlBottomCenter.add(pnlBottomCenterEast,BorderLayout.EAST);
