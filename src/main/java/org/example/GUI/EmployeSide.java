@@ -66,6 +66,7 @@ public class EmployeSide extends JFrame {
                 btnExit.setBackground(Color.getColor("",ColorPalette.getBackGround()));
                 btnExit.setForeground(Color.getColor("",ColorPalette.getForeGround()));
                 btnExit.addActionListener(e -> {
+                    JOptionPane.showMessageDialog(this,"You was been successfully logout","Logout",JOptionPane.INFORMATION_MESSAGE);
                     close();
                     new EmployeLoginSide().setVisible(true);
                 });pnlUpperCenter.add(btnExit);
