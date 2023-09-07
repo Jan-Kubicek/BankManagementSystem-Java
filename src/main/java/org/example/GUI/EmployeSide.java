@@ -46,7 +46,7 @@ public class EmployeSide extends JFrame {
                 btnCreateUserAcc.setBackground(Color.getColor("",ColorPalette.getBackGround()));
                 btnCreateUserAcc.setForeground(Color.getColor("",ColorPalette.getForeGround()));
                 btnCreateUserAcc.addActionListener(e -> {
-                    //TODO
+                    new CreateUsersAccount().setVisible(true);
                 });pnlUpperCenter.add(btnCreateUserAcc);
                 btnCreateAdminAcc = new JButton("Create Admins account");
                 btnCreateAdminAcc.setBackground(Color.getColor("",ColorPalette.getBackGround()));

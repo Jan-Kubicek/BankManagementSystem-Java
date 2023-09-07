@@ -2,6 +2,7 @@ package org.example.GUI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowEvent;
 
 public class CreateUsersAccount extends JFrame {
     //Komponents
@@ -63,8 +64,26 @@ public class CreateUsersAccount extends JFrame {
                 tfSex = new JTextField(); pnlRow2.add(tfSex);
             pnlCenter.add(pnlRow2);
             pnlRow3 = new JPanel(new GridLayout(1,4));
-
+                lbEmail = new JLabel("Email"); pnlRow3.add(lbEmail);
+                tfEmail = new JTextField(); pnlRow3.add(tfEmail);
+                lbTel = new JLabel("Telephone"); pnlRow3.add(lbTel);
+                tfTelephone = new JTextField(); pnlRow3.add(tfTelephone);
             pnlCenter.add(pnlRow3);
+            pnlRow4 = new JPanel( new GridLayout(1,2));
+                lbDateOfBirth = new JLabel("Date of Birth"); pnlRow4.add(lbDateOfBirth);
+                tfDateOfBirth= new JTextField(); pnlRow4.add(tfDateOfBirth); // DD/MM/YYYY
+            pnlCenter.add(pnlRow4);
+            pnlRow5 = new JPanel(new GridLayout(1,5));
+                lbDarkM = new JLabel("Dark Mode"); pnlRow5.add(lbDarkM);
+                rbtnYes = new JRadioButton( "Yes"); pnlRow5.add(rbtnYes);
+                rbtnNo = new JRadioButton("No"); pnlRow5.add(rbtnNo);
+            pnlCenter.add(pnlRow5);
+            pnlRow6 = new JPanel(new GridLayout(1,4));
+                lbPin = new JLabel("Pin"); pnlRow6.add(lbPin);
+                tfPin = new JTextField(); pnlRow6.add(tfPin);
+                lbPassword = new JLabel("Password"); pnlRow6.add(lbPassword);
+                tfPassword = new JTextField(); pnlRow6.add(tfPassword);
+            pnlCenter.add(pnlRow6);
         add(pnlCenter,BorderLayout.CENTER);
 
         pack();
@@ -72,5 +91,10 @@ public class CreateUsersAccount extends JFrame {
     //Main
     public static void main(String[] args){
         new CreateUsersAccount().setVisible(true);
+    }
+
+    public void close(){
+        WindowEvent closeWindow = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
+        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closeWindow);
     }
 }
