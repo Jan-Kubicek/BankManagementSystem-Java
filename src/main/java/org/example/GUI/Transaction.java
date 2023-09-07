@@ -1,4 +1,4 @@
-package org.example.Classes;
+package org.example.GUI;
 
 import java.time.LocalDateTime;
 import java.util.Random;

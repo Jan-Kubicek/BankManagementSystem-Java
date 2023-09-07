@@ -1,4 +1,4 @@
-package org.example.Classes;
+package org.example.GUI;
 
 import org.example.Exceptions.OutOfRangeException;
 import org.example.Exceptions.SameAtributeException;

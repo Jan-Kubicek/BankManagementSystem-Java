@@ -3,7 +3,7 @@ package org.example.GUI;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowEvent;
-
+import static org.example.GUI.CollectionOfUsersAccounts.*;
 
 public class CustomerLoginSide extends JFrame {
     //Komponenty
@@ -41,7 +41,16 @@ public class CustomerLoginSide extends JFrame {
         btnLogin.setBackground(Color.getColor("",ColorPalette.getBackGround()));
         btnLogin.setForeground(Color.getColor("",ColorPalette.getForeGround()));
         btnLogin.addActionListener(e -> {
-            //TODO
+            String name = tfName.getText();
+            String password = tfPassword.getText();
+            if(userLogin(name,password)){
+                close();
+                new UserSide().setVisible(true);
+                UserSide.setNameOfUser(name);
+            }
+            else{
+                JOptionPane.showMessageDialog(this,"Wrong name or password was entered","Not logged in",JOptionPane.INFORMATION_MESSAGE);
+            }
         });
         pnlRows.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
         pnlRows.setBackground(Color.getColor("",ColorPalette.getFormPanel()));

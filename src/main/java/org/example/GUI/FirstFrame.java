@@ -3,6 +3,8 @@ package org.example.GUI;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowEvent;
+import java.io.PrintWriter;
+import java.time.LocalDateTime;
 
 public class FirstFrame extends JFrame {
     //Komponenty
@@ -54,11 +56,19 @@ public class FirstFrame extends JFrame {
     //Main
     public static void main(String[] args){
         new FirstFrame().setVisible(true);
+        setUser();
     }
 
     public void close(){
         WindowEvent closeWindow = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closeWindow);
+    }
+
+    public static void setUser(){
+        UserAccount user = new UserAccount("jan","kubicek","bc","email@seznam.cz", LocalDateTime.MIN,"731357202","heslo","men",LocalDateTime.MAX,false,3333);
+        CollectionOfUsersAccounts.addUser(user);
+        System.out.print(user.name);
+        System.out.print(user.password);
     }
 
 }

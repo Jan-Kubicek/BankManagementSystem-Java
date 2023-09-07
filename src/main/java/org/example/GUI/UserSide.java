@@ -6,6 +6,9 @@ import java.awt.*;
 import java.awt.event.WindowEvent;
 
 public class UserSide extends JFrame {
+    //Atribute
+    public static String nameOfLoggedUser;
+
     //Komponenty
     JLabel lbName, lbUserName;
     JTable table;
@@ -23,7 +26,7 @@ public class UserSide extends JFrame {
         //North
         pnlNorth = new JPanel(new GridLayout(1,2));
             lbName = new JLabel("Name: "); pnlNorth.add(lbName);
-            lbUserName = new JLabel("UserName"); pnlNorth.add(lbUserName);
+            lbUserName = new JLabel(getNameOfLoggedUser()); pnlNorth.add(lbUserName);
             //TODO => after login lbUserName is AccountName of logined User
         add(pnlNorth, BorderLayout.NORTH);
         //East
@@ -136,4 +139,10 @@ public class UserSide extends JFrame {
         WindowEvent closeWindow = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closeWindow);
     }
+
+    public static void setNameOfUser(String name){
+        nameOfLoggedUser = name;
+    }
+
+    public static String getNameOfLoggedUser(){return nameOfLoggedUser;}
 }
