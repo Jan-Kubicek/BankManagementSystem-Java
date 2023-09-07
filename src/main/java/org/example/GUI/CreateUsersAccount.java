@@ -3,6 +3,7 @@ package org.example.GUI;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowEvent;
+import java.time.LocalDateTime;
 
 public class CreateUsersAccount extends JFrame {
     //Komponents
@@ -38,13 +39,37 @@ public class CreateUsersAccount extends JFrame {
                 btnCreate.setBackground(Color.getColor("",ColorPalette.getBackGround()));
                 btnCreate.setForeground(Color.getColor("",ColorPalette.getForeGround()));
                 btnCreate.addActionListener(e -> {
-                    //TODO
+                    String firstName = tfFirstName.getText();
+                    String lastName = tfLastName.getText();
+                    String degree = tfDegree.getText();
+                    String email = tfEmail.getText();
+                    String telephoneNumber = tfTelephone.getText();
+                    String sex = tfSex.getText();
+                    int pin = Integer.parseInt(tfPin.getText());
+                    String password = tfPassword.getText();
+                    boolean darkMode ;
+                    if(rbtnYes.isSelected()){
+                        darkMode=true;
+                    }else{
+                        darkMode=false;
+                    }
+                    String dateOfBirth = tfDateOfBirth.getText();
+                    int hour = 0;
+                    int minute = 0;
+                    String[] tokens = dateOfBirth.split("/");
+                    int[] numbers = new int[3];
+                    for( int i = 0; i < tokens.length; i++){
+                        numbers[i] = Integer.parseInt(tokens[i]);
+                    }
+                    LocalDateTime dateOfBirthLDT = LocalDateTime.of(numbers[2],numbers[1],numbers[0],hour,minute);
+                    UserAccount userAccount = new UserAccount(firstName,lastName,degree,email,LocalDateTime.now(),telephoneNumber,password,sex,dateOfBirthLDT,darkMode,pin);
+                    CollectionOfUsersAccounts.addUser(userAccount);
                 });pnlRow7.add(btnCreate);
                 btnExit = new JButton("Exit");
                 btnExit.setBackground(Color.getColor("",ColorPalette.getBackGround()));
                 btnExit.setForeground(Color.getColor("",ColorPalette.getForeGround()));
                 btnExit.addActionListener(e -> {
-                    //TODO
+                    close();
                 });pnlRow7.add(btnExit);
             pnlSouth.add(pnlRow7);
         add(pnlSouth,BorderLayout.SOUTH);

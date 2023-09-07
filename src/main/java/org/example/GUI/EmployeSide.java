@@ -4,6 +4,9 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.WindowEvent;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 
 public class EmployeSide extends JFrame {
     //Atributes
@@ -75,12 +78,12 @@ public class EmployeSide extends JFrame {
                 //Bottom Center - Center
                 pnlBottomCenterCenter = new JPanel(new GridLayout(1,1));
                     DefaultTableModel model = new DefaultTableModel();
-                        model.addColumn("ID");
-                        model.addColumn("Name");
-                        model.addColumn("Since");
-                        model.addColumn("Balance");
-                        model.addColumn("Email");
-                        model.addColumn("Telephone Numer");
+                        model.addColumn("ID");                  //0
+                        model.addColumn("Name");                //1
+                        model.addColumn("Since");               //2
+                        model.addColumn("Balance");             //3
+                        model.addColumn("Email");               //4
+                        model.addColumn("Telephone Numer");     //5
                     table = new JTable(model);
                     pnlBottomCenterCenter.add(new JScrollPane(table));
                 pnlBottomCenter.add(pnlBottomCenterCenter,BorderLayout.CENTER);
@@ -102,7 +105,13 @@ public class EmployeSide extends JFrame {
                     btnReset.setBackground(Color.getColor("",ColorPalette.getBackGround()));
                     btnReset.setForeground(Color.getColor("",ColorPalette.getForeGround()));
                     btnReset.addActionListener(e -> {
-                        //TODO
+                        model.setNumRows(0);
+                        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                        for (int i = 0; i < CollectionOfUsersAccounts.collectionOfUsers.size(); i ++){
+                            UserAccount userAccount = CollectionOfUsersAccounts.collectionOfUsers.get(i);
+                            String formatedDateOfBirth = userAccount.since.format(format);
+                            model.addRow(new Object[]{userAccount.getID(),userAccount.getName(),formatedDateOfBirth,userAccount.getAccountBalance(),userAccount.getEmail(),userAccount.getTelephoneNumber()});
+                        }
                     });pnlBottomCenterEast.add(btnReset);
                 pnlBottomCenter.add(pnlBottomCenterEast,BorderLayout.EAST);
             pnlCenter.add(pnlBottomCenter);
