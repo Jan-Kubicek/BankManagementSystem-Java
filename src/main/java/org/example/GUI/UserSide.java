@@ -4,6 +4,8 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.WindowEvent;
+import java.io.PrintWriter;
+import java.time.format.DateTimeFormatter;
 
 public class UserSide extends JFrame {
     //Atribute
@@ -51,7 +53,27 @@ public class UserSide extends JFrame {
                 btnPrintAllTransactions.setBackground(Color.getColor("",ColorPalette.getBackGround()));
                 btnPrintAllTransactions.setForeground(Color.getColor("",ColorPalette.getForeGround()));
                 btnPrintAllTransactions.addActionListener(e -> {
-                    //TODO
+                    String idOfLogginUser = getIdOfLoggedUser();
+                    try{
+                        PrintWriter vystup = new PrintWriter("Export.txt");
+                            vystup.println("All Transaction of this Account");
+                            vystup.println("OutComming transactions");
+                            for(int i = 0; i < CollectionOfTransactions.collectionOfTransactions.size(); i++){
+                                if(CollectionOfTransactions.collectionOfTransactions.get(i).getOutgoingAccount().ID.equals(idOfLogginUser)){
+                                    vystup.println(CollectionOfTransactions.collectionOfTransactions.get(i).toString());
+                                }
+                            }
+                            vystup.println("");
+                            vystup.println("Incomminng Account");
+                            for(int i = 0; i < CollectionOfTransactions.collectionOfTransactions.size(); i++){
+                                if(CollectionOfTransactions.collectionOfTransactions.get(i).getIncommingAccount().ID.equals(idOfLogginUser)){
+                                    vystup.println(CollectionOfTransactions.collectionOfTransactions.get(i).toString());
+                                }
+                            }
+                        vystup.close();
+                    }catch (Exception a){
+                        a.printStackTrace();
+                    }
                 });pnlUpper.add(btnPrintAllTransactions);
                 btnInsertMoney = new JButton("Insert Money");
                 btnInsertMoney.setForeground(Color.getColor("",ColorPalette.getForeGround()));
@@ -77,9 +99,8 @@ public class UserSide extends JFrame {
                 btnMakeTransaction = new JButton("Make Transaction");
                 btnMakeTransaction.setBackground(Color.getColor("",ColorPalette.getBackGround()));
                 btnMakeTransaction.setForeground(Color.getColor("",ColorPalette.getForeGround()));
-                btnMakeTransaction.addActionListener(e -> {
-                    //TODO
-                });pnlUpper.add(btnMakeTransaction);
+                btnMakeTransaction.addActionListener(e -> new CreateTransaction().setVisible(true));
+                pnlUpper.add(btnMakeTransaction);
                 btnExit = new JButton("Exit");
                 btnExit.setBackground(Color.getColor("",ColorPalette.getBackGround()));
                 btnExit.setForeground(Color.getColor("",ColorPalette.getForeGround()));
@@ -109,19 +130,33 @@ public class UserSide extends JFrame {
                     btnRemoveRow.setBackground(Color.getColor("",ColorPalette.getBackGround()));
                     btnRemoveRow.setForeground(Color.getColor("",ColorPalette.getForeGround()));
                     btnRemoveRow.addActionListener(e -> {
-                        //TODO
+                        int indexOfRow = table.getSelectedRow();
+                        model.removeRow(indexOfRow);
                     });pnlEastBottom.add(btnRemoveRow);
                     btnClear = new JButton("Clear");
                     btnClear.setBackground(Color.getColor("",ColorPalette.getBackGround()));
                     btnClear.setForeground(Color.getColor("",ColorPalette.getForeGround()));
-                    btnClear.addActionListener(e -> {
-                        //TODO
-                    });pnlEastBottom.add(btnClear);
+                    btnClear.addActionListener(e -> model.setNumRows(0));
+                    pnlEastBottom.add(btnClear);
                     btnPrintTransactions = new JButton("Print Transactions");
                     btnPrintTransactions.setBackground(Color.getColor("",ColorPalette.getBackGround()));
                     btnPrintTransactions.setForeground(Color.getColor("",ColorPalette.getForeGround()));
                     btnPrintTransactions.addActionListener(e -> {
-                        //TODO
+                        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                        int idOfRow = model.getRowCount(); ++idOfRow;
+                        String idOfLoginedUser = getIdOfLoggedUser();
+                        for(int i = 0; i < CollectionOfTransactions.collectionOfTransactions.size(); i ++){
+                            if(CollectionOfTransactions.collectionOfTransactions.get(i).incommingAccount.ID.equals(idOfLoginedUser)){
+                                Transaction transaction = CollectionOfTransactions.collectionOfTransactions.get(i);
+                                ++idOfRow;
+                                model.addRow(new Object[]{idOfRow,transaction.getId(),transaction.getOutgoingAccount().name,transaction.getIncommingAccount(),transaction.getAmountOfMoney(),transaction.getDateOfTransaction().format(format)});
+                            }
+                            if(CollectionOfTransactions.collectionOfTransactions.get(i).outgoingAccount.ID.equals(idOfLoginedUser)){
+                                Transaction transaction = CollectionOfTransactions.collectionOfTransactions.get(i);
+                                ++idOfRow;
+                                model.addRow(new Object[]{idOfRow,transaction.getId(),transaction.getOutgoingAccount().name,transaction.getIncommingAccount(),transaction.getAmountOfMoney(),transaction.getDateOfTransaction().format(format)});
+                            }
+                        }
                     });pnlEastBottom.add(btnPrintTransactions);
                 pnlBottom.add(pnlEastBottom,BorderLayout.EAST);
             pnlCenter.add(pnlBottom);

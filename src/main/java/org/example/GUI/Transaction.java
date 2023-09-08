@@ -25,7 +25,10 @@ public class Transaction {
         this.id = generateIdOfTransaction(outgoingAccount.name,incommingAccount.name);
     }
     //Method
-
+    @Override
+    public String toString(){
+        return "Id: "+id+ "\nOutgoing Account: "+outgoingAccount.name+"\nIncomming Account: "+incommingAccount+"\nAmount of Money: "+amountOfMoney;
+    }
     public UserAccount getOutgoingAccount(){return outgoingAccount;}
     public UserAccount getIncommingAccount(){return incommingAccount;}
     public float getAmountOfMoney(){return amountOfMoney;}

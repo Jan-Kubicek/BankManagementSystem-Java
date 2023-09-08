@@ -2,6 +2,7 @@ package org.example.GUI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowEvent;
 
 public class CreateTransaction extends JFrame {
     //Komponents
@@ -13,7 +14,7 @@ public class CreateTransaction extends JFrame {
     public CreateTransaction(){
         InitGUI();
         setTitle("Creating new Transaction");
-        setSize(640,480);
+        setSize(480,360);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
@@ -36,7 +37,19 @@ public class CreateTransaction extends JFrame {
                 btnControl.setBackground(Color.getColor("",ColorPalette.getBackGround()));
                 btnControl.setForeground(Color.getColor("",ColorPalette.getForeGround()));
                 btnControl.addActionListener(e -> {
-                    //TODO
+                    String idOfIncomeAcc = tfAccount.getText();
+                    boolean isThere = false;
+                    for(int i = 0; i < CollectionOfUsersAccounts.collectionOfUsers.size(); i++){
+                        if(CollectionOfUsersAccounts.collectionOfUsers.get(i).ID.equals(idOfIncomeAcc)){
+                            UserAccount userAccount = CollectionOfUsersAccounts.collectionOfUsers.get(i);
+                            JOptionPane.showMessageDialog(this,userAccount.name+" "+userAccount.Email+"\n"+userAccount.telephoneNumber,"Information",JOptionPane.INFORMATION_MESSAGE);
+                            isThere = true;
+                            break;
+                        }
+                    }
+                    if(!isThere){
+                        JOptionPane.showMessageDialog(this,"None of the Accounts have this id","WARNING",JOptionPane.WARNING_MESSAGE);
+                    }
                 });
                 pnlRow1.add(btnControl);
             pnlCenter.add(pnlRow1);
@@ -49,19 +62,40 @@ public class CreateTransaction extends JFrame {
                 btnSubmit.setBackground(Color.getColor("",ColorPalette.getBackGround()));
                 btnSubmit.setForeground(Color.getColor("",ColorPalette.getForeGround()));
                 btnSubmit.addActionListener(e -> {
-                    //TODO
+                    UserAccount incomeAccount = null;
+                    UserAccount outcomeAccount = null;
+                    String idOfOutComeAccount = UserSide.getIdOfLoggedUser();
+                    String idOfInComeAccount = tfAccount.getText();
+                    float amountOfMoney = Float.parseFloat(tfMoney.getText());
+                    for(int i = 0; i < CollectionOfUsersAccounts.collectionOfUsers.size(); i++){
+                        if(CollectionOfUsersAccounts.collectionOfUsers.get(i).ID.equals(idOfInComeAccount)){
+                            incomeAccount = CollectionOfUsersAccounts.collectionOfUsers.get(i);
+                        }
+                        if(CollectionOfUsersAccounts.collectionOfUsers.get(i).ID.equals(idOfOutComeAccount)){
+                            outcomeAccount = CollectionOfUsersAccounts.collectionOfUsers.get(i);
+                        }
+                    }
+                    if(incomeAccount != null && outcomeAccount != null){
+                        Transaction transaction = new Transaction(outcomeAccount,incomeAccount,amountOfMoney);
+                        CollectionOfTransactions.addTransaction(transaction);
+                    }
                 });
                 pnlRow3.add(btnSubmit);
                 btnExit = new JButton("Exit");
                 btnExit.setBackground(Color.getColor("",ColorPalette.getBackGround()));
                 btnExit.setForeground(Color.getColor("",ColorPalette.getForeGround()));
-                btnExit.addActionListener(e -> {
-                    //TODO
-                });
+                btnExit.addActionListener(e -> close());
                 pnlRow3.add(btnExit);
             pnlCenter.add(pnlRow3);
         add(pnlCenter,BorderLayout.CENTER);
         pack();
     }
     //Main
+    public static void main(String[] args){
+        new CreateTransaction().setVisible(true);
+    }
+    public void close(){
+        WindowEvent closeWindow = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
+        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closeWindow);
+    }
 }
