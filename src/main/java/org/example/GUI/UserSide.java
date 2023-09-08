@@ -142,6 +142,7 @@ public class UserSide extends JFrame {
                     btnPrintTransactions.setBackground(Color.getColor("",ColorPalette.getBackGround()));
                     btnPrintTransactions.setForeground(Color.getColor("",ColorPalette.getForeGround()));
                     btnPrintTransactions.addActionListener(e -> {
+                        model.setNumRows(0);
                         DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                         int idOfRow = model.getRowCount(); ++idOfRow;
                         String idOfLoginedUser = getIdOfLoggedUser();

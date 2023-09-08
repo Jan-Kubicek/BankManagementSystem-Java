@@ -78,6 +78,7 @@ public class CreateTransaction extends JFrame {
                     if(incomeAccount != null && outcomeAccount != null){
                         Transaction transaction = new Transaction(outcomeAccount,incomeAccount,amountOfMoney);
                         CollectionOfTransactions.addTransaction(transaction);
+                        JOptionPane.showMessageDialog(this,"New transaction was successfully made","Confirmed",JOptionPane.INFORMATION_MESSAGE);
                     }
                 });
                 pnlRow3.add(btnSubmit);

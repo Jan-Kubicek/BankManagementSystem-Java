@@ -36,8 +36,8 @@ public class Transaction {
     public String getId(){return  id;}
     public String generateIdOfTransaction(String outgoingAcc, String incommingAcc){
         String TRS ="TRS";
-        StringBuilder outg = null;
-        StringBuilder incg = null;
+        StringBuilder outg = new StringBuilder();
+        StringBuilder incg = new StringBuilder();
         String result;
         for (int i = 0 ; i < 3; i++){
             try{
@@ -51,7 +51,7 @@ public class Transaction {
         String number = String.valueOf(random.nextInt(99999 - 1));
         String id = TRS+outg+incg+number;
         if(!CollectionOfTransactions.isIdOccupied(id)){
-            result = id;
+            result = id.toUpperCase();
         }else{
             result = null;
         }
