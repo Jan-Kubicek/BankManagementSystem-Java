@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 
 public class CustomizeProfile extends JFrame {
     public static String  idOfCustomizedProfile;
+    public static boolean dark = false;
     //Komponents
     JLabel lbFirstName, lbLastName, lbDegree, lbEmail, lbTel, lbSex, lbDateOfBirth, lbPassword;
     JButton btnExit, btnCustom;
@@ -24,20 +25,33 @@ public class CustomizeProfile extends JFrame {
     public void InitGUI(){
         //West
         pnlWest = new JPanel();
-        pnlWest.setBackground(Color.getColor("",ColorPalette.getSidePannels()));
+        if(dark){
+            pnlWest.setBackground(Color.getColor("",ColorPalette.getDarkSidePannels()));
+        }else{
+            pnlWest.setBackground(Color.getColor("",ColorPalette.getSidePannels()));
+        }
         add(pnlWest,BorderLayout.WEST);
 
         //East
         pnlEast = new JPanel();
-        pnlEast.setBackground(Color.getColor("",ColorPalette.getSidePannels()));
+        if(dark){
+            pnlEast.setBackground(Color.getColor("",ColorPalette.getDarkSidePannels()));
+        }else{
+            pnlEast.setBackground(Color.getColor("",ColorPalette.getSidePannels()));
+        }
         add(pnlEast,BorderLayout.EAST);
 
         //South
         pnlSouth = new JPanel();
         pnlRow7 = new JPanel(new GridLayout(1,2));
         btnCustom = new JButton("Customize Account");
-        btnCustom.setBackground(Color.getColor("",ColorPalette.getBackGround()));
-        btnCustom.setForeground(Color.getColor("",ColorPalette.getForeGround()));
+        if(dark){
+            btnCustom.setBackground(Color.getColor("",ColorPalette.getDarkBackGround()));
+            btnCustom.setForeground(Color.getColor("",ColorPalette.getDarkForeGround()));
+        }else{
+            btnCustom.setBackground(Color.getColor("",ColorPalette.getBackGround()));
+            btnCustom.setForeground(Color.getColor("",ColorPalette.getForeGround()));
+        }
         btnCustom.addActionListener(e -> {
             String idOfCustomizedUser = getIdOfCustomizedProfile();
             StringBuilder firstTwoLetters = new StringBuilder();
@@ -289,8 +303,13 @@ public class CustomizeProfile extends JFrame {
             }
         });pnlRow7.add(btnCustom);
         btnExit = new JButton("Exit");
-        btnExit.setBackground(Color.getColor("",ColorPalette.getBackGround()));
-        btnExit.setForeground(Color.getColor("",ColorPalette.getForeGround()));
+        if(dark){
+            btnExit.setBackground(Color.getColor("",ColorPalette.getDarkBackGround()));
+            btnExit.setForeground(Color.getColor("",ColorPalette.getDarkForeGround()));
+        }else{
+            btnExit.setBackground(Color.getColor("",ColorPalette.getBackGround()));
+            btnExit.setForeground(Color.getColor("",ColorPalette.getForeGround()));
+        }
         btnExit.addActionListener(e -> close());pnlRow7.add(btnExit);
         pnlSouth.add(pnlRow7);
         add(pnlSouth,BorderLayout.SOUTH);
@@ -339,4 +358,6 @@ public class CustomizeProfile extends JFrame {
     //Methods
     public static void setIdOfCustomizedProfile(String idOfCustomizedProfile1){idOfCustomizedProfile = idOfCustomizedProfile1;}
     public static String getIdOfCustomizedProfile(){return idOfCustomizedProfile;}
+    public static void setDark(boolean dark1){dark = dark1;}
+    public static boolean getDark(){return dark;}
 }

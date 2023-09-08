@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.event.WindowEvent;
 
 public class CreateTransaction extends JFrame {
+    //Atributes
+    public static boolean dark = false;
     //Komponents
     JPanel pnlWest, pnlEast, pnlCenter, pnlRow1, pnlRow2, pnlRow3;
     JLabel lbIncomeAccount, lbAmountOfMoney;
@@ -22,11 +24,19 @@ public class CreateTransaction extends JFrame {
     public void InitGUI(){
         //West
         pnlWest = new JPanel();
-            pnlWest.setBackground(Color.getColor("",ColorPalette.getSidePannels()));
+           if(dark){
+               pnlWest.setBackground(Color.getColor("",ColorPalette.getDarkSidePannels()));
+           }else{
+               pnlWest.setBackground(Color.getColor("",ColorPalette.getSidePannels()));
+           }
         add(pnlWest, BorderLayout.WEST);
         //East
         pnlEast = new JPanel();
+        if(dark){
+            pnlEast.setBackground(Color.getColor("",ColorPalette.getDarkSidePannels()));
+        }else{
             pnlEast.setBackground(Color.getColor("",ColorPalette.getSidePannels()));
+        }
         add(pnlEast,BorderLayout.EAST);
         //Center
         pnlCenter = new JPanel(new GridLayout(3,1));
@@ -34,8 +44,13 @@ public class CreateTransaction extends JFrame {
                 lbIncomeAccount = new JLabel("Income Account"); pnlRow1.add(lbIncomeAccount);
                 tfAccount = new JTextField(); pnlRow1.add(tfAccount);
                 btnControl = new JButton("Control");
-                btnControl.setBackground(Color.getColor("",ColorPalette.getBackGround()));
-                btnControl.setForeground(Color.getColor("",ColorPalette.getForeGround()));
+                if(dark){
+                    btnControl.setBackground(Color.getColor("",ColorPalette.getDarkBackGround()));
+                    btnControl.setForeground(Color.getColor("",ColorPalette.getDarkForeGround()));
+                }else{
+                    btnControl.setBackground(Color.getColor("",ColorPalette.getBackGround()));
+                    btnControl.setForeground(Color.getColor("",ColorPalette.getForeGround()));
+                }
                 btnControl.addActionListener(e -> {
                     String idOfIncomeAcc = tfAccount.getText();
                     boolean isThere = false;
@@ -59,8 +74,13 @@ public class CreateTransaction extends JFrame {
             pnlCenter.add(pnlRow2);
             pnlRow3 = new JPanel( new GridLayout(1,2));
                 btnSubmit = new JButton("Submit");
-                btnSubmit.setBackground(Color.getColor("",ColorPalette.getBackGround()));
-                btnSubmit.setForeground(Color.getColor("",ColorPalette.getForeGround()));
+                if(dark){
+                    btnSubmit.setBackground(Color.getColor("",ColorPalette.getDarkBackGround()));
+                    btnSubmit.setForeground(Color.getColor("",ColorPalette.getDarkForeGround()));
+                }else{
+                    btnSubmit.setBackground(Color.getColor("",ColorPalette.getBackGround()));
+                    btnSubmit.setForeground(Color.getColor("",ColorPalette.getForeGround()));
+                }
                 btnSubmit.addActionListener(e -> {
                     UserAccount incomeAccount = null;
                     UserAccount outcomeAccount = null;
@@ -83,8 +103,13 @@ public class CreateTransaction extends JFrame {
                 });
                 pnlRow3.add(btnSubmit);
                 btnExit = new JButton("Exit");
-                btnExit.setBackground(Color.getColor("",ColorPalette.getBackGround()));
-                btnExit.setForeground(Color.getColor("",ColorPalette.getForeGround()));
+                if(dark){
+                    btnExit.setBackground(Color.getColor("",ColorPalette.getDarkBackGround()));
+                    btnExit.setForeground(Color.getColor("",ColorPalette.getDarkForeGround()));
+                }else{
+                    btnExit.setBackground(Color.getColor("",ColorPalette.getBackGround()));
+                    btnExit.setForeground(Color.getColor("",ColorPalette.getForeGround()));
+                }
                 btnExit.addActionListener(e -> close());
                 pnlRow3.add(btnExit);
             pnlCenter.add(pnlRow3);
@@ -99,4 +124,6 @@ public class CreateTransaction extends JFrame {
         WindowEvent closeWindow = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closeWindow);
     }
+    public static void setDark(boolean dark1){dark = dark1;}
+    public static boolean getDark(){return dark;}
 }

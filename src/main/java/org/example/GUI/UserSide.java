@@ -6,7 +6,6 @@ import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.io.PrintWriter;
 import java.time.format.DateTimeFormatter;
-import static org.example.GUI.CollectionOfUsersAccounts.*;
 
 public class UserSide extends JFrame {
     //Atribute
@@ -63,6 +62,7 @@ public class UserSide extends JFrame {
                 }
                 btnCustomizedProfile.addActionListener(e -> {
                     new CustomizeProfile();
+                    CustomizeProfile.setDark(dark);
                     CustomizeProfile.setIdOfCustomizedProfile(getIdOfLoggedUser());
                     new CustomizeProfile().setVisible(true);
                 });
@@ -107,7 +107,11 @@ public class UserSide extends JFrame {
                     btnInsertMoney.setForeground(Color.getColor("", ColorPalette.getForeGround()));
                     btnInsertMoney.setBackground(Color.getColor("", ColorPalette.getBackGround()));
                 }
-                btnInsertMoney.addActionListener(e -> new InsertMoney().setVisible(true));
+                btnInsertMoney.addActionListener(e -> {
+                    new InsertMoney();
+                    InsertMoney.setDark(dark);
+                    new InsertMoney().setVisible(true);
+                });
                 pnlUpper.add(btnInsertMoney);
                 btnSettings = new JButton("Settings");
                 if(dark){
@@ -116,7 +120,11 @@ public class UserSide extends JFrame {
                 }else {
                     btnSettings.setBackground(Color.getColor("", ColorPalette.getBackGround()));
                     btnSettings.setForeground(Color.getColor("", ColorPalette.getForeGround()));
-                }btnSettings.addActionListener(e -> new Settings().setVisible(true));
+                }btnSettings.addActionListener(e -> {
+                    new Settings();
+                    Settings.setDark(dark);
+                    new Settings().setVisible(true);
+                });
                 pnlUpper.add(btnSettings);
                 btnWithdrawMoney = new JButton("Withdraw Money");
                 if(dark){
@@ -125,7 +133,11 @@ public class UserSide extends JFrame {
                 }else {
                     btnWithdrawMoney.setBackground(Color.getColor("", ColorPalette.getBackGround()));
                     btnWithdrawMoney.setForeground(Color.getColor("", ColorPalette.getForeGround()));
-                }btnWithdrawMoney.addActionListener(e -> new WithdrawMoney().setVisible(true));
+                }btnWithdrawMoney.addActionListener(e -> {
+                    new WithdrawMoney();
+                    WithdrawMoney.setDark(dark);
+                    new WithdrawMoney().setVisible(true);
+                });
                 pnlUpper.add(btnWithdrawMoney);
                 btnChangePinCode = new JButton("Change PIN");
                 if(dark){
@@ -134,7 +146,11 @@ public class UserSide extends JFrame {
                 }else {
                     btnChangePinCode.setBackground(Color.getColor("", ColorPalette.getBackGround()));
                     btnChangePinCode.setForeground(Color.getColor("", ColorPalette.getForeGround()));
-                }btnChangePinCode.addActionListener(e -> new ChangePinCode().setVisible(true));
+                }btnChangePinCode.addActionListener(e -> {
+                    new ChangePinCode();
+                    ChangePinCode.setDark(dark);
+                    new ChangePinCode().setVisible(true);
+                });
                 pnlUpper.add(btnChangePinCode);
                 btnMakeTransaction = new JButton("Make Transaction");
                 if(dark){
@@ -143,7 +159,11 @@ public class UserSide extends JFrame {
                 }else {
                     btnMakeTransaction.setBackground(Color.getColor("", ColorPalette.getBackGround()));
                     btnMakeTransaction.setForeground(Color.getColor("", ColorPalette.getForeGround()));
-                }btnMakeTransaction.addActionListener(e -> new CreateTransaction().setVisible(true));
+                }btnMakeTransaction.addActionListener(e -> {
+                    new CreateTransaction();
+                    CreateTransaction.setDark(dark);
+                    new CreateTransaction().setVisible(true);
+                });
                 pnlUpper.add(btnMakeTransaction);
                 btnExit = new JButton("Exit");
                 if(dark){
@@ -239,7 +259,7 @@ public class UserSide extends JFrame {
         nameOfLoggedUser = name;
     }
     public static void setDark(boolean dark1){dark = dark1;}
-
+    public static boolean getDark(){return dark;}
     public static String getNameOfLoggedUser(){return nameOfLoggedUser;}
     public static void setIdOfLoggedUser(String id){ IdOfLoggedUser = id;}
     public static String getIdOfLoggedUser(){return IdOfLoggedUser;}

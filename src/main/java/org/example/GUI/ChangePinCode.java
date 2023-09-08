@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.event.WindowEvent;
 
 public class ChangePinCode extends JFrame {
+    //Atributes
+    public static boolean dark = false;
     //Komponents
     JLabel lbChangePin;
     JButton btnSubmit;
@@ -27,17 +29,30 @@ public class ChangePinCode extends JFrame {
         add(pnlCenter,BorderLayout.CENTER);
         //West
         pnlWest = new JPanel();
-        pnlWest.setBackground(Color.getColor("",ColorPalette.getSidePannels()));
+        if(dark){
+            pnlWest.setBackground(Color.getColor("",ColorPalette.getDarkSidePannels()));
+        }else{
+            pnlWest.setBackground(Color.getColor("",ColorPalette.getSidePannels()));
+        }
         add(pnlWest,BorderLayout.WEST);
         //East
         pnlEast = new JPanel();
-        pnlEast.setBackground(Color.getColor("",ColorPalette.getSidePannels()));
+        if(dark){
+            pnlEast.setBackground(Color.getColor("",ColorPalette.getDarkSidePannels()));
+        }else{
+            pnlEast.setBackground(Color.getColor("",ColorPalette.getSidePannels()));
+        }
         add(pnlEast,BorderLayout.EAST);
         //South
         pnlSouth = new JPanel(new GridLayout(1,1));
         btnSubmit = new JButton("Submit");
-        btnSubmit.setBackground(Color.getColor("",ColorPalette.getBackGround()));
-        btnSubmit.setForeground(Color.getColor("",ColorPalette.getForeGround()));
+        if(dark){
+            btnSubmit.setBackground(Color.getColor("",ColorPalette.getDarkBackGround()));
+            btnSubmit.setForeground(Color.getColor("",ColorPalette.getDarkForeGround()));
+        }else{
+            btnSubmit.setBackground(Color.getColor("",ColorPalette.getBackGround()));
+            btnSubmit.setForeground(Color.getColor("",ColorPalette.getForeGround()));
+        }
         btnSubmit.addActionListener(e -> {
             String idOfUser = UserSide.getIdOfLoggedUser();
             int newPinCode = Integer.parseInt(tfChangePin.getText());
@@ -67,4 +82,6 @@ public class ChangePinCode extends JFrame {
         WindowEvent closeWindow = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closeWindow);
     }
+    public static void setDark(boolean dark1){dark = dark1;}
+    public static boolean getDark(){return dark;}
 }

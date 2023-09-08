@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.event.WindowEvent;
 
 public class Settings extends JFrame {
+    //Atributes
+    public static boolean dark = false;
     //Komponents
     JPanel pnlWest, pnlEast, pnlCenter, pnlRows12, pnlRow3, pnlRow4;
     JLabel lbDarkMode, lbFinancialLimit, lbActualFinancialLimit;
@@ -22,12 +24,19 @@ public class Settings extends JFrame {
     public void InitGUI(){
         //West
         pnlWest = new JPanel();
+        if(dark){
+            pnlWest.setBackground(Color.getColor("",ColorPalette.getDarkSidePannels()));
+        }else{
             pnlWest.setBackground(Color.getColor("",ColorPalette.getSidePannels()));
+        }
         add(pnlWest,BorderLayout.WEST);
         //East
         pnlEast = new JPanel();
+        if(dark){
+            pnlEast.setBackground(Color.getColor("",ColorPalette.getDarkSidePannels()));
+        }else{
             pnlEast.setBackground(Color.getColor("",ColorPalette.getSidePannels()));
-        add(pnlEast,BorderLayout.EAST);
+        }add(pnlEast,BorderLayout.EAST);
         //Central
         pnlCenter = new JPanel(new GridLayout(4,1));
             pnlRows12 = new JPanel(new GridLayout(2,2));
@@ -50,8 +59,13 @@ public class Settings extends JFrame {
             pnlCenter.add(pnlRow3);
             pnlRow4 = new JPanel(new GridLayout(1,2));
                 btnConfirm = new JButton("Confirm");
-                btnConfirm.setBackground(Color.getColor("",ColorPalette.getBackGround()));
-                btnConfirm.setForeground(Color.getColor("",ColorPalette.getForeGround()));
+                if(dark){
+                    btnConfirm.setBackground(Color.getColor("",ColorPalette.getDarkBackGround()));
+                    btnConfirm.setForeground(Color.getColor("",ColorPalette.getDarkForeGround()));
+                }else{
+                    btnConfirm.setBackground(Color.getColor("",ColorPalette.getBackGround()));
+                    btnConfirm.setForeground(Color.getColor("",ColorPalette.getForeGround()));
+                }
                 btnConfirm.addActionListener(e -> {
                     String idOfLOggedUser = UserSide.getIdOfLoggedUser();
                     UserAccount UserAccount = null;
@@ -92,8 +106,13 @@ public class Settings extends JFrame {
                     }
                 });pnlRow4.add(btnConfirm);
                 btnExit = new JButton("Exit");
-                btnExit.setBackground(Color.getColor("",ColorPalette.getBackGround()));
-                btnExit.setForeground(Color.getColor("",ColorPalette.getForeGround()));
+                if(dark){
+                    btnExit.setBackground(Color.getColor("",ColorPalette.getDarkBackGround()));
+                    btnExit.setForeground(Color.getColor("",ColorPalette.getDarkForeGround()));
+                }else{
+                    btnExit.setBackground(Color.getColor("",ColorPalette.getBackGround()));
+                    btnExit.setForeground(Color.getColor("",ColorPalette.getForeGround()));
+                }
                 btnExit.addActionListener(e -> close()); pnlRow4.add(btnExit);
             pnlCenter.add(pnlRow4);
         add(pnlCenter,BorderLayout.CENTER);
@@ -109,4 +128,6 @@ public class Settings extends JFrame {
         WindowEvent closeWindow = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closeWindow);
     }
+    public static void setDark(boolean dark1){dark = dark1;}
+    public static boolean getDark(){return dark;}
 }
