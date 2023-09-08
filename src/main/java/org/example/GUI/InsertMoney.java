@@ -15,7 +15,7 @@ public class InsertMoney extends JFrame {
     public InsertMoney(){
         InitGUI();
         setTitle("Insert Money");
-        setSize(640,480);
+        setSize(320,120);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
     //GUI

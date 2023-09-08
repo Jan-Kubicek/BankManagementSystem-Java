@@ -15,7 +15,7 @@ public class ChangePinCode extends JFrame {
     public ChangePinCode(){
         InitGUI();
         setTitle("Change Pin Code");
-        setSize(640,480);
+        setSize(300,120);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
     //GUI

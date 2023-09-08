@@ -15,14 +15,14 @@ public class WithdrawMoney extends JFrame {
     public WithdrawMoney(){
         InitGUI();
         setTitle("Withdraw Money");
-        setSize(640,480);
+        setSize(360,120);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
     //GUI
     public void InitGUI(){
         //Center
         pnlCenter = new JPanel(new GridLayout(1,2));
-        lbWithdraw = new JLabel("Insert amount of money");pnlCenter.add(lbWithdraw);
+        lbWithdraw = new JLabel("Withdraw amount of money");pnlCenter.add(lbWithdraw);
         tfWithdraw = new JTextField();pnlCenter.add(tfWithdraw);
         add(pnlCenter,BorderLayout.CENTER);
         //West

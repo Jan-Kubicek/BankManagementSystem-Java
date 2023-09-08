@@ -22,6 +22,7 @@ public class Transaction {
         incommingAccount.inCome(amountOfMoney);
         this.amountOfMoney = amountOfMoney;
         this.dateOfTransaction = LocalDateTime.now();
+        this.id = generateIdOfTransaction(outgoingAccount.name,incommingAccount.name);
     }
     //Method
 
