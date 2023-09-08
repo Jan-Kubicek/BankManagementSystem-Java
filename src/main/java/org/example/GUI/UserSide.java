@@ -85,9 +85,7 @@ public class UserSide extends JFrame {
                 btnSettings = new JButton("Settings");
                 btnSettings.setBackground(Color.getColor("",ColorPalette.getBackGround()));
                 btnSettings.setForeground(Color.getColor("",ColorPalette.getForeGround()));
-                btnSettings.addActionListener(e -> {
-                    //TODO
-                });pnlUpper.add(btnSettings);
+                btnSettings.addActionListener(e -> new Settings().setVisible(true));pnlUpper.add(btnSettings);
                 btnWithdrawMoney = new JButton("Withdraw Money");
                 btnWithdrawMoney.setBackground(Color.getColor("",ColorPalette.getBackGround()));
                 btnWithdrawMoney.setForeground(Color.getColor("",ColorPalette.getForeGround()));

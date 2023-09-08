@@ -9,6 +9,11 @@ public class ColorPalette {
     public static Color bodyPanel = Color.white;
     public static Color formPanel = Color.gray;
 
+    public static Color darkBackGround = new Color(88, 4, 4);
+    public static Color darkForeGround = Color.white;
+    public static Color darkSidePannels = Color.black;
+    public static Color darkBodyPanel = Color.darkGray;
+    public static Color darkFormPanel = new Color(117, 117, 117, 255);
     public static Color getFormPanel() {
         return formPanel;
     }
@@ -28,4 +33,5 @@ public class ColorPalette {
     public static Color getForeGround() {
         return foreGround;
     }
+
 }

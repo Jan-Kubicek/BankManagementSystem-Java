@@ -45,6 +45,7 @@ public class CustomizeProfile extends JFrame {
                 firstTwoLetters.append(idOfCustomizedUser.charAt(i));
             }
             if(firstTwoLetters.toString().equals("US")){ //User
+                boolean successfully = true;
                 UserAccount userAccount = null;
                 for(int i = 0; i < CollectionOfUsersAccounts.collectionOfUsers.size(); i++){
                     if(CollectionOfUsersAccounts.collectionOfUsers.get(i).ID.equals(idOfCustomizedUser)){
@@ -71,6 +72,7 @@ public class CustomizeProfile extends JFrame {
                             userAccount.setName(name);
                         } catch (Exception exception) {
                             JOptionPane.showMessageDialog(this, exception.getMessage(), "Warning", JOptionPane.WARNING_MESSAGE);
+                            successfully = false;
                         }
                     }
                     if (bLastName) {
@@ -81,6 +83,7 @@ public class CustomizeProfile extends JFrame {
                             userAccount.setName(name);
                         } catch (Exception exception) {
                             JOptionPane.showMessageDialog(this, exception.getMessage(), "Warning", JOptionPane.WARNING_MESSAGE);
+                            successfully = false;
                         }
                     }
                     if (bDegree) {
@@ -91,6 +94,7 @@ public class CustomizeProfile extends JFrame {
                             userAccount.setName(name);
                         } catch (Exception exception) {
                             JOptionPane.showMessageDialog(this, exception.getMessage(), "Warning", JOptionPane.WARNING_MESSAGE);
+                            successfully = false;
                         }
                     }
                     if (bSex) {
@@ -98,6 +102,7 @@ public class CustomizeProfile extends JFrame {
                             userAccount.setSex(sex);
                         } catch (Exception exception) {
                             JOptionPane.showMessageDialog(this, exception.getMessage(), "Warning", JOptionPane.WARNING_MESSAGE);
+                            successfully = false;
                         }
                     }
                     if (bEmail) {
@@ -105,6 +110,7 @@ public class CustomizeProfile extends JFrame {
                             userAccount.setEmail(email);
                         } catch (Exception exception) {
                             JOptionPane.showMessageDialog(this, exception.getMessage(), "Warning", JOptionPane.WARNING_MESSAGE);
+                            successfully = false;
                         }
                     }
                     if (bTelephone) {
@@ -112,6 +118,7 @@ public class CustomizeProfile extends JFrame {
                             userAccount.setTelephoneNumber(telephone);
                         } catch (Exception exception) {
                             JOptionPane.showMessageDialog(this, exception.getMessage(), "Warning", JOptionPane.WARNING_MESSAGE);
+                            successfully = false;
                         }
                     }
                     if (bDateOfBirth) {
@@ -127,6 +134,7 @@ public class CustomizeProfile extends JFrame {
                             userAccount.setDateOfBirth(dateOfBirthLDT);
                         } catch (Exception exception) {
                             JOptionPane.showMessageDialog(this, exception.getMessage(), "Warning", JOptionPane.WARNING_MESSAGE);
+                            successfully = false;
                         }
                     }
                     if (bPassword) {
@@ -134,11 +142,16 @@ public class CustomizeProfile extends JFrame {
                             userAccount.setPassword(password);
                         } catch (Exception exception) {
                             JOptionPane.showMessageDialog(this, exception.getMessage(), "Warning", JOptionPane.WARNING_MESSAGE);
+                            successfully = false;
                         }
                     }
                 }
+                if(successfully){
+                    JOptionPane.showMessageDialog(this,"Changes was successfully saved","Successfull",JOptionPane.INFORMATION_MESSAGE);
+                }
             }
             if(firstTwoLetters.toString().equals("AD")) { //ADMIN Employe
+                boolean successfully = true;
                 AdminAccount adminAccount = null;
                 for (int i = 0; i < CollectionOfAdminAccounts.collectionOfAdmins.size(); i++) {
                     if (CollectionOfAdminAccounts.collectionOfAdmins.get(i).ID.equals(idOfCustomizedUser)) {
@@ -196,6 +209,7 @@ public class CustomizeProfile extends JFrame {
                             adminAccount.setName(name);
                         } catch (Exception exception) {
                             JOptionPane.showMessageDialog(this, exception.getMessage(), "Warning", JOptionPane.WARNING_MESSAGE);
+                            successfully = false;
                         }
                     }
                     if (bLastName) {
@@ -206,6 +220,7 @@ public class CustomizeProfile extends JFrame {
                             adminAccount.setName(name);
                         } catch (Exception exception) {
                             JOptionPane.showMessageDialog(this, exception.getMessage(), "Warning", JOptionPane.WARNING_MESSAGE);
+                            successfully = false;
                         }
                     }
                     if (bDegree) {
@@ -216,6 +231,7 @@ public class CustomizeProfile extends JFrame {
                             adminAccount.setName(name);
                         } catch (Exception exception) {
                             JOptionPane.showMessageDialog(this, exception.getMessage(), "Warning", JOptionPane.WARNING_MESSAGE);
+                            successfully = false;
                         }
                     }
                     if (bSex) {
@@ -223,6 +239,7 @@ public class CustomizeProfile extends JFrame {
                             adminAccount.setSex(sex);
                         } catch (Exception exception) {
                             JOptionPane.showMessageDialog(this, exception.getMessage(), "Warning", JOptionPane.WARNING_MESSAGE);
+                            successfully = false;
                         }
                     }
                     if (bEmail) {
@@ -230,6 +247,7 @@ public class CustomizeProfile extends JFrame {
                             adminAccount.setEmail(email);
                         } catch (Exception exception) {
                             JOptionPane.showMessageDialog(this, exception.getMessage(), "Warning", JOptionPane.WARNING_MESSAGE);
+                            successfully = false;
                         }
                     }
                     if (bTelephone) {
@@ -237,6 +255,7 @@ public class CustomizeProfile extends JFrame {
                             adminAccount.setTelephoneNumber(telephone);
                         } catch (Exception exception) {
                             JOptionPane.showMessageDialog(this, exception.getMessage(), "Warning", JOptionPane.WARNING_MESSAGE);
+                            successfully = false;
                         }
                     }
                     if (bDateOfBirth) {
@@ -252,6 +271,7 @@ public class CustomizeProfile extends JFrame {
                             adminAccount.setDateOfBirth(dateOfBirthLDT);
                         } catch (Exception exception) {
                             JOptionPane.showMessageDialog(this, exception.getMessage(), "Warning", JOptionPane.WARNING_MESSAGE);
+                            successfully = false;
                         }
                     }
                     if (bPassword) {
@@ -259,8 +279,12 @@ public class CustomizeProfile extends JFrame {
                             adminAccount.setPassword(password);
                         } catch (Exception exception) {
                             JOptionPane.showMessageDialog(this, exception.getMessage(), "Warning", JOptionPane.WARNING_MESSAGE);
+                            successfully = false;
                         }
                     }
+                }
+                if(successfully){
+                    JOptionPane.showMessageDialog(this,"Changes was successfully saved","Successfull",JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         });pnlRow7.add(btnCustom);
