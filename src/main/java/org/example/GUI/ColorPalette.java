@@ -14,6 +14,7 @@ public class ColorPalette {
     public static Color darkSidePannels = Color.black;
     public static Color darkBodyPanel = Color.darkGray;
     public static Color darkFormPanel = new Color(117, 117, 117, 255);
+
     public static Color getFormPanel() {
         return formPanel;
     }
@@ -34,4 +35,13 @@ public class ColorPalette {
         return foreGround;
     }
 
+    public static Color getDarkBackGround() {return darkBackGround;}
+
+    public static Color getDarkForeGround() {return darkForeGround;}
+
+    public static Color getDarkSidePannels() {return darkSidePannels;}
+
+    public static Color getDarkBodyPanel() {return darkBodyPanel;}
+
+    public static Color getDarkFormPanel() {return darkFormPanel;}
 }

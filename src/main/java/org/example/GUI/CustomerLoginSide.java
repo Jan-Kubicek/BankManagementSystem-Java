@@ -45,12 +45,15 @@ public class CustomerLoginSide extends JFrame {
             String password = tfPassword.getText();
             String id = "";
             if(userLogin(name,password)){
+                boolean dark = false;
                 for (UserAccount collectionOfUser : collectionOfUsers) {
                     if (collectionOfUser.name.equals(name)) {
                         id = collectionOfUser.ID;
+                        dark = collectionOfUser.getDarkMode();
                     }
                 }
                 new UserSide();
+                UserSide.setDark(dark);
                 UserSide.setIdOfLoggedUser(id);
                 UserSide.setNameOfUser(name);
                 close();

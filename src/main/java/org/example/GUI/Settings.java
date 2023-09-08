@@ -90,11 +90,11 @@ public class Settings extends JFrame {
                             JOptionPane.showMessageDialog(this,"Settings was confirmed","Information",JOptionPane.INFORMATION_MESSAGE);
                         }
                     }
-                });
+                });pnlRow4.add(btnConfirm);
                 btnExit = new JButton("Exit");
                 btnExit.setBackground(Color.getColor("",ColorPalette.getBackGround()));
                 btnExit.setForeground(Color.getColor("",ColorPalette.getForeGround()));
-                btnExit.addActionListener(e -> close());
+                btnExit.addActionListener(e -> close()); pnlRow4.add(btnExit);
             pnlCenter.add(pnlRow4);
         add(pnlCenter,BorderLayout.CENTER);
 

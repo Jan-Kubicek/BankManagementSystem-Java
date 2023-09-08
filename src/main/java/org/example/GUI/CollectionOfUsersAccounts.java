@@ -18,6 +18,16 @@ public class CollectionOfUsersAccounts {
         return isIdOccupied;
     }
 
+    public static UserAccount findUserById(String id){
+        int idnex = -1;
+        for(int i = 0; i < collectionOfUsers.size(); i++){
+            if(collectionOfUsers.get(i).ID.equals(id)){
+                idnex = i;
+            }
+        }
+        return collectionOfUsers.get(idnex);
+    }
+
     public static boolean userLogin(String name, String password){
         boolean login = false;
         for(UserAccount userAccount : collectionOfUsers){

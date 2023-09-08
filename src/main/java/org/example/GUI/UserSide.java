@@ -6,11 +6,12 @@ import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.io.PrintWriter;
 import java.time.format.DateTimeFormatter;
+import static org.example.GUI.CollectionOfUsersAccounts.*;
 
 public class UserSide extends JFrame {
     //Atribute
     public static String nameOfLoggedUser, IdOfLoggedUser;
-
+    public static boolean dark;
     //Komponenty
     JLabel lbName, lbUserName, lbId;
     JTable table;
@@ -33,27 +34,48 @@ public class UserSide extends JFrame {
         add(pnlNorth, BorderLayout.NORTH);
         //East
         pnlEast = new JPanel();
-        pnlEast.setBackground(Color.getColor("",ColorPalette.getSidePannels()));
+        if(dark){
+            pnlEast.setBackground(Color.getColor("",ColorPalette.getDarkSidePannels()));
+        }else {
+            pnlEast.setBackground(Color.getColor("",ColorPalette.getSidePannels()));
+        }
         add(pnlEast,BorderLayout.EAST);
         //West
         pnlWest = new JPanel();
-        pnlWest.setBackground(Color.getColor("",ColorPalette.getSidePannels()));
+        if(dark){
+            pnlWest.setBackground(Color.getColor("",ColorPalette.getDarkSidePannels()));
+        }else{
+            pnlWest.setBackground(Color.getColor("",ColorPalette.getSidePannels()));
+        }
         add(pnlWest,BorderLayout.WEST);
         //Center
         pnlCenter = new JPanel(new GridLayout(2,1));
             //Upper Center
             pnlUpper = new JPanel( new GridLayout(4,2));
                 btnCustomizedProfile = new JButton("Customize Profile");
-                btnCustomizedProfile.setBackground(Color.getColor("",ColorPalette.getBackGround()));
-                btnCustomizedProfile.setForeground(Color.getColor("",ColorPalette.getForeGround()));
+                if(dark){
+                    btnCustomizedProfile.setBackground(Color.getColor("",ColorPalette.getDarkBackGround()));
+                    btnCustomizedProfile.setForeground(Color.getColor("",ColorPalette.getDarkForeGround()));
+                }
+                else{
+                    btnCustomizedProfile.setBackground(Color.getColor("",ColorPalette.getBackGround()));
+                    btnCustomizedProfile.setForeground(Color.getColor("",ColorPalette.getForeGround()));
+                }
                 btnCustomizedProfile.addActionListener(e -> {
                     new CustomizeProfile();
                     CustomizeProfile.setIdOfCustomizedProfile(getIdOfLoggedUser());
                     new CustomizeProfile().setVisible(true);
-                });pnlUpper.add(btnCustomizedProfile);
+                });
+
+                pnlUpper.add(btnCustomizedProfile);
                 btnPrintAllTransactions = new JButton("Print all Transactions");
-                btnPrintAllTransactions.setBackground(Color.getColor("",ColorPalette.getBackGround()));
-                btnPrintAllTransactions.setForeground(Color.getColor("",ColorPalette.getForeGround()));
+                if(dark){
+                    btnPrintAllTransactions.setBackground(Color.getColor("",ColorPalette.getDarkBackGround()));
+                    btnPrintAllTransactions.setForeground(Color.getColor("",ColorPalette.getDarkForeGround()));
+                }else{
+                    btnPrintAllTransactions.setBackground(Color.getColor("", ColorPalette.getBackGround()));
+                    btnPrintAllTransactions.setForeground(Color.getColor("", ColorPalette.getForeGround()));
+                }
                 btnPrintAllTransactions.addActionListener(e -> {
                     String idOfLogginUser = getIdOfLoggedUser();
                     try{
@@ -78,33 +100,59 @@ public class UserSide extends JFrame {
                     }
                 });pnlUpper.add(btnPrintAllTransactions);
                 btnInsertMoney = new JButton("Insert Money");
-                btnInsertMoney.setForeground(Color.getColor("",ColorPalette.getForeGround()));
-                btnInsertMoney.setBackground(Color.getColor("",ColorPalette.getBackGround()));
+                if(dark){
+                    btnInsertMoney.setBackground(Color.getColor("",ColorPalette.getDarkBackGround()));
+                    btnInsertMoney.setForeground(Color.getColor("",ColorPalette.getDarkForeGround()));
+                }else {
+                    btnInsertMoney.setForeground(Color.getColor("", ColorPalette.getForeGround()));
+                    btnInsertMoney.setBackground(Color.getColor("", ColorPalette.getBackGround()));
+                }
                 btnInsertMoney.addActionListener(e -> new InsertMoney().setVisible(true));
                 pnlUpper.add(btnInsertMoney);
                 btnSettings = new JButton("Settings");
-                btnSettings.setBackground(Color.getColor("",ColorPalette.getBackGround()));
-                btnSettings.setForeground(Color.getColor("",ColorPalette.getForeGround()));
-                btnSettings.addActionListener(e -> new Settings().setVisible(true));pnlUpper.add(btnSettings);
+                if(dark){
+                    btnSettings.setBackground(Color.getColor("",ColorPalette.getDarkBackGround()));
+                    btnSettings.setForeground(Color.getColor("",ColorPalette.getDarkForeGround()));
+                }else {
+                    btnSettings.setBackground(Color.getColor("", ColorPalette.getBackGround()));
+                    btnSettings.setForeground(Color.getColor("", ColorPalette.getForeGround()));
+                }btnSettings.addActionListener(e -> new Settings().setVisible(true));
+                pnlUpper.add(btnSettings);
                 btnWithdrawMoney = new JButton("Withdraw Money");
-                btnWithdrawMoney.setBackground(Color.getColor("",ColorPalette.getBackGround()));
-                btnWithdrawMoney.setForeground(Color.getColor("",ColorPalette.getForeGround()));
-                btnWithdrawMoney.addActionListener(e -> new WithdrawMoney().setVisible(true));
+                if(dark){
+                    btnWithdrawMoney.setBackground(Color.getColor("",ColorPalette.getDarkBackGround()));
+                    btnWithdrawMoney.setForeground(Color.getColor("",ColorPalette.getDarkForeGround()));
+                }else {
+                    btnWithdrawMoney.setBackground(Color.getColor("", ColorPalette.getBackGround()));
+                    btnWithdrawMoney.setForeground(Color.getColor("", ColorPalette.getForeGround()));
+                }btnWithdrawMoney.addActionListener(e -> new WithdrawMoney().setVisible(true));
                 pnlUpper.add(btnWithdrawMoney);
                 btnChangePinCode = new JButton("Change PIN");
-                btnChangePinCode.setBackground(Color.getColor("",ColorPalette.getBackGround()));
-                btnChangePinCode.setForeground(Color.getColor("",ColorPalette.getForeGround()));
-                btnChangePinCode.addActionListener(e -> new ChangePinCode().setVisible(true));
+                if(dark){
+                    btnChangePinCode.setBackground(Color.getColor("",ColorPalette.getDarkBackGround()));
+                    btnChangePinCode.setForeground(Color.getColor("",ColorPalette.getDarkForeGround()));
+                }else {
+                    btnChangePinCode.setBackground(Color.getColor("", ColorPalette.getBackGround()));
+                    btnChangePinCode.setForeground(Color.getColor("", ColorPalette.getForeGround()));
+                }btnChangePinCode.addActionListener(e -> new ChangePinCode().setVisible(true));
                 pnlUpper.add(btnChangePinCode);
                 btnMakeTransaction = new JButton("Make Transaction");
-                btnMakeTransaction.setBackground(Color.getColor("",ColorPalette.getBackGround()));
-                btnMakeTransaction.setForeground(Color.getColor("",ColorPalette.getForeGround()));
-                btnMakeTransaction.addActionListener(e -> new CreateTransaction().setVisible(true));
+                if(dark){
+                    btnMakeTransaction.setBackground(Color.getColor("",ColorPalette.getDarkBackGround()));
+                    btnMakeTransaction.setForeground(Color.getColor("",ColorPalette.getDarkForeGround()));
+                }else {
+                    btnMakeTransaction.setBackground(Color.getColor("", ColorPalette.getBackGround()));
+                    btnMakeTransaction.setForeground(Color.getColor("", ColorPalette.getForeGround()));
+                }btnMakeTransaction.addActionListener(e -> new CreateTransaction().setVisible(true));
                 pnlUpper.add(btnMakeTransaction);
                 btnExit = new JButton("Exit");
-                btnExit.setBackground(Color.getColor("",ColorPalette.getBackGround()));
-                btnExit.setForeground(Color.getColor("",ColorPalette.getForeGround()));
-                btnExit.addActionListener(e -> {
+                if(dark){
+                    btnExit.setBackground(Color.getColor("",ColorPalette.getDarkBackGround()));
+                    btnExit.setForeground(Color.getColor("",ColorPalette.getDarkForeGround()));
+                }else {
+                    btnExit.setBackground(Color.getColor("", ColorPalette.getBackGround()));
+                    btnExit.setForeground(Color.getColor("", ColorPalette.getForeGround()));
+                }btnExit.addActionListener(e -> {
                     JOptionPane.showMessageDialog(this,"You was been successfully logout","Logout",JOptionPane.INFORMATION_MESSAGE);
                     close();
                     new CustomerLoginSide().setVisible(true);
@@ -127,21 +175,33 @@ public class UserSide extends JFrame {
                 //Bottom Center - East
                 pnlEastBottom = new JPanel(new GridLayout(3,1));
                     btnRemoveRow = new JButton("Remove Row");
-                    btnRemoveRow.setBackground(Color.getColor("",ColorPalette.getBackGround()));
-                    btnRemoveRow.setForeground(Color.getColor("",ColorPalette.getForeGround()));
-                    btnRemoveRow.addActionListener(e -> {
+                    if(dark){
+                        btnRemoveRow.setBackground(Color.getColor("",ColorPalette.getDarkBackGround()));
+                        btnRemoveRow.setForeground(Color.getColor("",ColorPalette.getDarkForeGround()));
+                    }else {
+                        btnRemoveRow.setBackground(Color.getColor("", ColorPalette.getBackGround()));
+                        btnRemoveRow.setForeground(Color.getColor("", ColorPalette.getForeGround()));
+                    }btnRemoveRow.addActionListener(e -> {
                         int indexOfRow = table.getSelectedRow();
                         model.removeRow(indexOfRow);
                     });pnlEastBottom.add(btnRemoveRow);
                     btnClear = new JButton("Clear");
-                    btnClear.setBackground(Color.getColor("",ColorPalette.getBackGround()));
-                    btnClear.setForeground(Color.getColor("",ColorPalette.getForeGround()));
-                    btnClear.addActionListener(e -> model.setNumRows(0));
+                    if(dark){
+                        btnClear.setBackground(Color.getColor("",ColorPalette.getDarkBackGround()));
+                        btnClear.setForeground(Color.getColor("",ColorPalette.getDarkForeGround()));
+                    }else {
+                        btnClear.setBackground(Color.getColor("", ColorPalette.getBackGround()));
+                        btnClear.setForeground(Color.getColor("", ColorPalette.getForeGround()));
+                    }btnClear.addActionListener(e -> model.setNumRows(0));
                     pnlEastBottom.add(btnClear);
                     btnPrintTransactions = new JButton("Print Transactions");
-                    btnPrintTransactions.setBackground(Color.getColor("",ColorPalette.getBackGround()));
-                    btnPrintTransactions.setForeground(Color.getColor("",ColorPalette.getForeGround()));
-                    btnPrintTransactions.addActionListener(e -> {
+                    if(dark){
+                        btnPrintTransactions.setBackground(Color.getColor("",ColorPalette.getDarkBackGround()));
+                        btnPrintTransactions.setForeground(Color.getColor("",ColorPalette.getDarkForeGround()));
+                    }else {
+                        btnPrintTransactions.setBackground(Color.getColor("", ColorPalette.getBackGround()));
+                        btnPrintTransactions.setForeground(Color.getColor("", ColorPalette.getForeGround()));
+                    }btnPrintTransactions.addActionListener(e -> {
                         model.setNumRows(0);
                         DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                         int idOfRow = model.getRowCount(); ++idOfRow;
@@ -158,7 +218,8 @@ public class UserSide extends JFrame {
                                 model.addRow(new Object[]{idOfRow,transaction.getId(),transaction.getOutgoingAccount().name,transaction.getIncommingAccount(),transaction.getAmountOfMoney(),transaction.getDateOfTransaction().format(format)});
                             }
                         }
-                    });pnlEastBottom.add(btnPrintTransactions);
+                    });
+                    pnlEastBottom.add(btnPrintTransactions);
                 pnlBottom.add(pnlEastBottom,BorderLayout.EAST);
             pnlCenter.add(pnlBottom);
         add(pnlCenter,BorderLayout.CENTER);
@@ -177,6 +238,7 @@ public class UserSide extends JFrame {
     public static void setNameOfUser(String name){
         nameOfLoggedUser = name;
     }
+    public static void setDark(boolean dark1){dark = dark1;}
 
     public static String getNameOfLoggedUser(){return nameOfLoggedUser;}
     public static void setIdOfLoggedUser(String id){ IdOfLoggedUser = id;}
