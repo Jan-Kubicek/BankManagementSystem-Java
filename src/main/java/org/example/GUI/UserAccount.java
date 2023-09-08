@@ -12,10 +12,12 @@ final class UserAccount extends Account{
     private int accountPinCode;
     private boolean darkMode;
     private float financialLimits;
+    public String firstName, lastName, degree;
 
     //Konstructors
     public UserAccount(String firstName, String lastName, String degree, String email, LocalDateTime since, String telephoneNumber, String password, String sex, LocalDateTime dateOfBirth, boolean darkMode, int pinCode){
         this.Email = email; this.since = since; this.telephoneNumber = telephoneNumber; this.password = password; this.sex = sex; this.dateOfBirth = dateOfBirth; this.darkMode = darkMode; this.accountPinCode = pinCode;
+        this.firstName = firstName; this.lastName = lastName; this.degree = degree;
         this.name = degree+" "+firstName+" "+lastName;
         this.ID = generateIdForUser(firstName,lastName);
         this.accountBalance = 0;

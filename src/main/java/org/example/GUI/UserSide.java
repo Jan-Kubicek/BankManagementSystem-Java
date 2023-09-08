@@ -47,7 +47,9 @@ public class UserSide extends JFrame {
                 btnCustomizedProfile.setBackground(Color.getColor("",ColorPalette.getBackGround()));
                 btnCustomizedProfile.setForeground(Color.getColor("",ColorPalette.getForeGround()));
                 btnCustomizedProfile.addActionListener(e -> {
-                    //TODO
+                    new CustomizeProfile();
+                    CustomizeProfile.setIdOfCustomizedProfile(getIdOfLoggedUser());
+                    new CustomizeProfile().setVisible(true);
                 });pnlUpper.add(btnCustomizedProfile);
                 btnPrintAllTransactions = new JButton("Print all Transactions");
                 btnPrintAllTransactions.setBackground(Color.getColor("",ColorPalette.getBackGround()));

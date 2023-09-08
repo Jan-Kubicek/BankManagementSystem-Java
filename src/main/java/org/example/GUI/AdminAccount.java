@@ -7,9 +7,11 @@ import java.time.LocalDateTime;
 import java.util.Random;
 
 public class AdminAccount extends Account{
+    public String firstName, lastName, degree;
     //Konstructor
     public AdminAccount(String firstName, String lastName, String degree, String email, LocalDateTime since, String telephoneNumber, String password, String sex, LocalDateTime dateOfBirth){
         this.Email = email; this.since = since; this.telephoneNumber = telephoneNumber; this.password = password; this.sex = sex; this.dateOfBirth = dateOfBirth;
+        this.firstName = firstName; this.lastName = lastName; this.degree = degree;
         this.name = degree+" "+firstName+" "+lastName;
         this.ID = generateIdForAdmin(firstName,lastName);
         //Adress must be added manually => Adress must be initialized seperated and after that connected;

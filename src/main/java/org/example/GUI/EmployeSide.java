@@ -89,7 +89,11 @@ public class EmployeSide extends JFrame {
                     btnCustomizeProfile.setBackground(Color.getColor("",ColorPalette.getBackGround()));
                     btnCustomizeProfile.setForeground(Color.getColor("",ColorPalette.getForeGround()));
                     btnCustomizeProfile.addActionListener(e -> {
-                        //TODO
+                        int indexOfRow = table.getSelectedRow();
+                        String idOfCustomizedProfile = model.getValueAt(indexOfRow,0).toString();
+                        new CustomizeProfile();
+                        CustomizeProfile.setIdOfCustomizedProfile(idOfCustomizedProfile);
+                        new CustomizeProfile().setVisible(true);
                     });pnlBottomCenterEast.add(btnCustomizeProfile);
                     btnDeleteAcc = new JButton("Delete account");
                     btnDeleteAcc.setBackground(Color.getColor("",ColorPalette.getBackGround()));
